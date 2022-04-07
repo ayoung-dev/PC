@@ -1,5 +1,5 @@
-//°ü¸®ÀÚ GUI
-//»ç¿ëÀÚÀÇ Á¤º¸¿Í °áÁ¦ÇÒ ¼ö ÀÖ´Â GUI
+//ê´€ë¦¬ì GUI
+//ì‚¬ìš©ìì˜ ì •ë³´ì™€ ê²°ì œí•  ìˆ˜ ìˆëŠ” GUI
 package pc;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,11 +18,11 @@ public class UserIFGUI extends JFrame{
 		JPanel idpanel = new JPanel();
 		JPanel timepanel = new JPanel();
 		try {
-			namepanel.add(new JLabel("ÀÌ¸§: "));
+			namepanel.add(new JLabel("ì´ë¦„: "));
 			namepanel.add(new JLabel(LoginGUI.ac.getPerson(LoginGUI.ac.useCheck(PCNum)).getName()));
-			idpanel.add(new JLabel("¾ÆÀÌµğ: "));
+			idpanel.add(new JLabel("ì•„ì´ë””: "));
 			idpanel.add(new JLabel(LoginGUI.ac.getPerson(LoginGUI.ac.useCheck(PCNum)).getId()));
-			timepanel.add(new JLabel("½Ã°£: "));
+			timepanel.add(new JLabel("ì‹œê°„: "));
 			timepanel.add(new Label(Double.toString(LoginGUI.ac.getPerson(LoginGUI.ac.useCheck(PCNum)).getTime())));
 		} catch (Exception e) {
 		}
@@ -32,9 +32,9 @@ public class UserIFGUI extends JFrame{
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JPanel panel_1 = new JPanel();
-		JButton chatbtn = new JButton("Ã¤ÆÃÇÏ±â");
+		JButton chatbtn = new JButton("ì±„íŒ…í•˜ê¸°");
 		
-		// Ã¤ÆÃ ¹öÆ° Å¬¸¯ÇÏ¸é ÇØ´ç »ç¿ëÀÚ¿ÍÀÇ Ã¤ÆÃ
+		// ì±„íŒ… ë²„íŠ¼ í´ë¦­í•˜ë©´ í•´ë‹¹ ì‚¬ìš©ìì™€ì˜ ì±„íŒ…
 		chatbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ServerFrame("8888");

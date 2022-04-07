@@ -1,5 +1,5 @@
-//°ü¸®ÀÚ GUI
-//ÀÚ¸® ÇöÈ²À» ¾Ë ¼ö ÀÖÀ½
+//ê´€ë¦¬ì GUI
+//ìë¦¬ í˜„í™©ì„ ì•Œ ìˆ˜ ìˆìŒ
 package pc;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,182 +14,182 @@ public class AdministratorGUI extends JFrame {
 		setTitle("Administrator");
 		setBounds(10, 50, 650, 570);
 		
-		//¸ŞÀÎ ÆĞ³Î
+		//ë©”ì¸ íŒ¨ë„
 		JPanel panel = new JPanel();
 		
-		//Ã¹Â°ÁÙ(¼­ºêÆĞ³Î)
+		//ì²«ì§¸ì¤„(ì„œë¸ŒíŒ¨ë„)
 		JPanel panel_1 = new JPanel();
 		JButton btn_1 = new JButton();
-		btn_1.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_1.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_1.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_1.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_1, "1¹ø", 1);
+				checkPC(btn_1, "1ë²ˆ", 1);
 			}
 		});
-		usePC(btn_1, "1¹ø");
+		usePC(btn_1, "1ë²ˆ");
 		JButton btn_2 = new JButton();
-		btn_2.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_2.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_2.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_2.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_2, "2¹ø", 2);
+				checkPC(btn_2, "2ë²ˆ", 2);
 			}
 		});
-		usePC(btn_2, "2¹ø");
+		usePC(btn_2, "2ë²ˆ");
 		JButton btn_3 = new JButton();
-		btn_3.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_3.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_3.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_3.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_3, "3¹ø", 3);
+				checkPC(btn_3, "3ë²ˆ", 3);
 			}
 		});
-		usePC(btn_3, "3¹ø");
+		usePC(btn_3, "3ë²ˆ");
 		JButton btn_4 = new JButton();
-		btn_4.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_4.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_4.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_4.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_4, "4¹ø", 4);
+				checkPC(btn_4, "4ë²ˆ", 4);
 			}
 		});
-		usePC(btn_4, "4¹ø");
+		usePC(btn_4, "4ë²ˆ");
 		panel_1.add(btn_1);
 		panel_1.add(btn_2);
 		panel_1.add(btn_3);
 		panel_1.add(btn_4);
 		
-		//µÑÂ°ÁÙ(¼­ºêÆĞ³Î)
+		//ë‘˜ì§¸ì¤„(ì„œë¸ŒíŒ¨ë„)
 		JPanel panel_2 = new JPanel();
 		JButton btn_5 = new JButton();
-		btn_5.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_5.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_5.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_5.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_5, "5¹ø", 5);
+				checkPC(btn_5, "5ë²ˆ", 5);
 			}
 		});
-		usePC(btn_5, "5¹ø");
+		usePC(btn_5, "5ë²ˆ");
 		JButton btn_6 = new JButton();
-		btn_6.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_6.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_6.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_6.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_6, "6¹ø", 6);
+				checkPC(btn_6, "6ë²ˆ", 6);
 			}
 		});
-		usePC(btn_6, "6¹ø");
+		usePC(btn_6, "6ë²ˆ");
 		JButton btn_7 = new JButton();
-		btn_7.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_7.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_7.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_7.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_7, "7¹ø", 7);
+				checkPC(btn_7, "7ë²ˆ", 7);
 			}
 		});
-		usePC(btn_7, "7¹ø");
+		usePC(btn_7, "7ë²ˆ");
 		JButton btn_8 = new JButton();
-		btn_8.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_8.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_8.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_8.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_8, "8¹ø", 8);
+				checkPC(btn_8, "8ë²ˆ", 8);
 			}
 		});
-		usePC(btn_8, "8¹ø");
+		usePC(btn_8, "8ë²ˆ");
 		panel_2.add(btn_5);
 		panel_2.add(btn_6);
 		panel_2.add(btn_7);
 		panel_2.add(btn_8);
 				
-		//¼ÂÂ°ÁÙ(¼­ºêÆĞ³Î)
+		//ì…‹ì§¸ì¤„(ì„œë¸ŒíŒ¨ë„)
 		JPanel panel_3 = new JPanel();
 		JButton btn_9 = new JButton();
-		btn_9.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_9.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_9.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_9.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_9, "9¹ø", 9);
+				checkPC(btn_9, "9ë²ˆ", 9);
 			}
 		});
-		usePC(btn_9, "9¹ø");
+		usePC(btn_9, "9ë²ˆ");
 		JButton btn_10 = new JButton();
-		btn_10.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_10.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_10.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_10.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_10, "10¹ø", 10);
+				checkPC(btn_10, "10ë²ˆ", 10);
 			}
 		});
-		usePC(btn_10, "10¹ø");
+		usePC(btn_10, "10ë²ˆ");
 		JButton btn_11 = new JButton();
-		btn_11.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_11.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_11.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_11.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_11, "11¹ø", 11);
+				checkPC(btn_11, "11ë²ˆ", 11);
 			}
 		});
-		usePC(btn_11, "11¹ø");
+		usePC(btn_11, "11ë²ˆ");
 		JButton btn_12 = new JButton();
-		btn_12.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_12.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_12.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_12.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_12, "12¹ø", 12);
+				checkPC(btn_12, "12ë²ˆ", 12);
 			}
 		});
-		usePC(btn_12, "12¹ø");
+		usePC(btn_12, "12ë²ˆ");
 		panel_3.add(btn_9);
 		panel_3.add(btn_10);
 		panel_3.add(btn_11);
 		panel_3.add(btn_12);
 		
-		//³İÂ°ÁÙ(¼­ºêÆĞ³Î)
+		//ë„·ì§¸ì¤„(ì„œë¸ŒíŒ¨ë„)
 		JPanel panel_4 = new JPanel();
 		JButton btn_13 = new JButton();
-		btn_13.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_13.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_13.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_13.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_13, "13¹ø", 13);
+				checkPC(btn_13, "13ë²ˆ", 13);
 			}
 		});
-		usePC(btn_13, "13¹ø");
+		usePC(btn_13, "13ë²ˆ");
 		JButton btn_14 = new JButton();
-		btn_14.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_14.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_14.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_14.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_14, "14¹ø", 14);
+				checkPC(btn_14, "14ë²ˆ", 14);
 			}
 		});
-		usePC(btn_14, "14¹ø");
+		usePC(btn_14, "14ë²ˆ");
 		JButton btn_15 = new JButton();
-		btn_15.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_15.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_15.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_15.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_15.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_15, "15¹ø", 15);
+				checkPC(btn_15, "15ë²ˆ", 15);
 			}
 		});
-		usePC(btn_15, "15¹ø");
+		usePC(btn_15, "15ë²ˆ");
 		JButton btn_16 = new JButton();
-		btn_16.setPreferredSize(new Dimension(100, 100));	//¹öÆ° »çÀÌÁî
-		btn_16.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		btn_16.setPreferredSize(new Dimension(100, 100));	//ë²„íŠ¼ ì‚¬ì´ì¦ˆ
+		btn_16.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		btn_16.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				checkPC(btn_16, "16¹ø", 16);
+				checkPC(btn_16, "16ë²ˆ", 16);
 			}
 		});
-		usePC(btn_16, "16¹ø");
+		usePC(btn_16, "16ë²ˆ");
 		panel_4.add(btn_13);
 		panel_4.add(btn_14);
 		panel_4.add(btn_15);
 		panel_4.add(btn_16);
 		
-		//¸ŞÀÎ ÆĞ³Î¿¡ ¼­ºê ÆĞ³ÎµéÀ» ³Ö¾î¼­ CENTER¿¡ ¹èÄ¡ÇÏ±â
+		//ë©”ì¸ íŒ¨ë„ì— ì„œë¸Œ íŒ¨ë„ë“¤ì„ ë„£ì–´ì„œ CENTERì— ë°°ì¹˜í•˜ê¸°
 		panel.add(panel_1);
 		panel.add(panel_2);
 		panel.add(panel_3);
@@ -197,35 +197,35 @@ public class AdministratorGUI extends JFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JPanel panel_5 = new JPanel();
-		JButton refreshbtn = new JButton("»õ·Î°íÄ§");
+		JButton refreshbtn = new JButton("ìƒˆë¡œê³ ì¹¨");
 		refreshbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				usePC(btn_1, "1¹ø");
-				usePC(btn_2, "2¹ø");
-				usePC(btn_3, "3¹ø");
-				usePC(btn_4, "4¹ø");
-				usePC(btn_5, "5¹ø");
-				usePC(btn_6, "6¹ø");
-				usePC(btn_7, "7¹ø");
-				usePC(btn_8, "8¹ø");
-				usePC(btn_9, "9¹ø");
-				usePC(btn_10, "10¹ø");
-				usePC(btn_11, "11¹ø");
-				usePC(btn_12, "12¹ø");
-				usePC(btn_13, "13¹ø");
-				usePC(btn_14, "14¹ø");
-				usePC(btn_15, "15¹ø");
-				usePC(btn_16, "16¹ø");
+				usePC(btn_1, "1ë²ˆ");
+				usePC(btn_2, "2ë²ˆ");
+				usePC(btn_3, "3ë²ˆ");
+				usePC(btn_4, "4ë²ˆ");
+				usePC(btn_5, "5ë²ˆ");
+				usePC(btn_6, "6ë²ˆ");
+				usePC(btn_7, "7ë²ˆ");
+				usePC(btn_8, "8ë²ˆ");
+				usePC(btn_9, "9ë²ˆ");
+				usePC(btn_10, "10ë²ˆ");
+				usePC(btn_11, "11ë²ˆ");
+				usePC(btn_12, "12ë²ˆ");
+				usePC(btn_13, "13ë²ˆ");
+				usePC(btn_14, "14ë²ˆ");
+				usePC(btn_15, "15ë²ˆ");
+				usePC(btn_16, "16ë²ˆ");
 				
 			}
 		});
-		JButton member = new JButton("È¸¿ø Á¤º¸ Á¶È¸");
+		JButton member = new JButton("íšŒì› ì •ë³´ ì¡°íšŒ");
 		member.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MemberGUI();
 			}
 		});
-		JButton goodsbtn = new JButton("Àç°í °ü¸®");
+		JButton goodsbtn = new JButton("ì¬ê³  ê´€ë¦¬");
 		goodsbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new AdminMenuGUI();
@@ -238,7 +238,7 @@ public class AdministratorGUI extends JFrame {
 		getContentPane().add(panel_5, BorderLayout.SOUTH);
 		
 		JPanel panel_6 = new JPanel();
-		JLabel totalLabel = new JLabel("¸ÅÃâ: ");
+		JLabel totalLabel = new JLabel("ë§¤ì¶œ: ");
 		try {
 			salesLabel.setText(LoginGUI.ac.getSales());
 		} catch (Exception e1) {
@@ -254,9 +254,9 @@ public class AdministratorGUI extends JFrame {
 		setResizable(false);
 	}
 	
-	//ÀÌ¿ëÁßÀÎ ÁÂ¼®Àº È¸¿ø Á¤º¸ ºÒ·¯¿À±â
+	//ì´ìš©ì¤‘ì¸ ì¢Œì„ì€ íšŒì› ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
 	void checkPC(Object btn, String PCNum, int num) {
-		if(((AbstractButton) btn).getText() == "»ç¿ëÁß") {
+		if(((AbstractButton) btn).getText() == "ì‚¬ìš©ì¤‘") {
 			try {
 				new UserIFGUI(PCNum);
 				
@@ -269,14 +269,14 @@ public class AdministratorGUI extends JFrame {
 	void usePC(Object btn, String PCNum) {
 		try {
 			LoginGUI.ac.useCheck(PCNum);
-			((AbstractButton) btn).setText("»ç¿ëÁß");
-			((Component) btn).setBackground(Color.lightGray);	//¹è°æ»ö ÁöÁ¤
-			((AbstractButton) btn).setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
-			((Component) btn).setForeground(Color.red);	//±ÛÀÚ»ö ÁöÁ¤
+			((AbstractButton) btn).setText("ì‚¬ìš©ì¤‘");
+			((Component) btn).setBackground(Color.lightGray);	//ë°°ê²½ìƒ‰ ì§€ì •
+			((AbstractButton) btn).setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
+			((Component) btn).setForeground(Color.red);	//ê¸€ììƒ‰ ì§€ì •
 		} catch (Exception e) {
-			((AbstractButton) btn).setText("»ç¿ë °¡´É");
-			((Component) btn).setBackground(Color.white);	//¹è°æ»ö ÁöÁ¤
-			((Component) btn).setForeground(Color.black);	//±ÛÀÚ»ö ÁöÁ¤
+			((AbstractButton) btn).setText("ì‚¬ìš© ê°€ëŠ¥");
+			((Component) btn).setBackground(Color.white);	//ë°°ê²½ìƒ‰ ì§€ì •
+			((Component) btn).setForeground(Color.black);	//ê¸€ììƒ‰ ì§€ì •
 		}
 	}
 }

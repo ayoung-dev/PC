@@ -1,4 +1,4 @@
-//ÀÚ¸® ¼±ÅÃÇÏ¸é »ç¿ëÀÚ¿¡°Ô º¸ÀÌ´Â GUI
+//ìë¦¬ ì„ íƒí•˜ë©´ ì‚¬ìš©ìì—ê²Œ ë³´ì´ëŠ” GUI
 package pc;
 
 import javax.swing.JFrame;
@@ -17,30 +17,30 @@ public class UserGUI extends JFrame {
 		long start = System.currentTimeMillis();
 		setTitle("User");
 		setBounds(10, 50, 400, 1000);
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH½Ã mmºĞ ssÃÊ ");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HHì‹œ mmë¶„ ssì´ˆ ");
 
-		// x¹öÆ° Å¬¸¯ ½Ã Á¾·á
+		// xë²„íŠ¼ í´ë¦­ ì‹œ ì¢…ë£Œ
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		int index = LoginGUI.index1;
-		name = LoginGUI.ac.getPerson(LoginGUI.index1).getName(); // ·Î±×ÀÎ ÇÑ °èÁ¤ÀÇ ÀÌ¸§À» ºÒ·¯¿Í º¯¼ö¿¡ ÀúÀå
+		name = LoginGUI.ac.getPerson(LoginGUI.index1).getName(); // ë¡œê·¸ì¸ í•œ ê³„ì •ì˜ ì´ë¦„ì„ ë¶ˆëŸ¬ì™€ ë³€ìˆ˜ì— ì €ì¥
 		JPanel panel_1 = new JPanel();
 		JPanel panel_2 = new JPanel();
-		JLabel label = new JLabel(name); // ·Î±×ÀÎ ÇÑ °èÁ¤ÀÇ ÀÌ¸§À» ³Ö¾î¼­ ±Û¾¾ ¾²±â
-		label.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.BOLD, 14)); // ÆùÆ® ¼Ó¼º ÁöÁ¤
-		JLabel label_1 = new JLabel("´Ô ¾È³çÇÏ¼¼¿ä"); // ·Î±×ÀÎ ÇÑ °èÁ¤ÀÇ ÀÌ¸§À» ³Ö¾î¼­ ±Û¾¾ ¾²±â
-		label_1.setFont(new Font("³ª´®¹Ù¸¥°íµñ", Font.PLAIN, 12)); // ÆùÆ® ¼Ó¼º ÁöÁ¤
+		JLabel label = new JLabel(name); // ë¡œê·¸ì¸ í•œ ê³„ì •ì˜ ì´ë¦„ì„ ë„£ì–´ì„œ ê¸€ì”¨ ì“°ê¸°
+		label.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.BOLD, 14)); // í°íŠ¸ ì†ì„± ì§€ì •
+		JLabel label_1 = new JLabel("ë‹˜ ì•ˆë…•í•˜ì„¸ìš”"); // ë¡œê·¸ì¸ í•œ ê³„ì •ì˜ ì´ë¦„ì„ ë„£ì–´ì„œ ê¸€ì”¨ ì“°ê¸°
+		label_1.setFont(new Font("ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•", Font.PLAIN, 12)); // í°íŠ¸ ì†ì„± ì§€ì •
 		panel_2.add(label);
 		panel_2.add(label_1);
 
-		// ·Î±×¾Æ¿ô ¹öÆ° ¸¸µé±â
+		// ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë§Œë“¤ê¸°
 		JPanel panel_3 = new JPanel();
-		JButton logoutbutton = new JButton("Log out"); // "Log out"¹öÆ° ¸¸µé±â
-		logoutbutton.setOpaque(false); // ¹öÆ°À» Åõ¸íÇÏ°Ô true->ºÒÅõ¸í
-		logoutbutton.setContentAreaFilled(false); // ¹öÆ° ¹è°æ ¾ø¾Ö±â
-		logoutbutton.setBorderPainted(false); // ¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		JButton logoutbutton = new JButton("Log out"); // "Log out"ë²„íŠ¼ ë§Œë“¤ê¸°
+		logoutbutton.setOpaque(false); // ë²„íŠ¼ì„ íˆ¬ëª…í•˜ê²Œ true->ë¶ˆíˆ¬ëª…
+		logoutbutton.setContentAreaFilled(false); // ë²„íŠ¼ ë°°ê²½ ì—†ì• ê¸°
+		logoutbutton.setBorderPainted(false); // ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		panel_3.add(logoutbutton);
-		// ·Î±×¾Æ¿ô ¹öÆ°À» ´©¸£¸é "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù"¾Ë¸²Ã¢°ú µ¿½Ã¿¡ Ã¢ÀÌ »ç¶óÁø´Ù.
+		// ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ "ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤"ì•Œë¦¼ì°½ê³¼ ë™ì‹œì— ì°½ì´ ì‚¬ë¼ì§„ë‹¤.
 		logoutbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				long logout = System.currentTimeMillis ();
@@ -52,12 +52,12 @@ public class UserGUI extends JFrame {
 					e1.printStackTrace();
 				}
 				try {
-					LoginGUI.ac.logoutModify(index, "»ç¿ë°¡´É");
+					LoginGUI.ac.logoutModify(index, "ì‚¬ìš©ê°€ëŠ¥");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				JOptionPane.showMessageDialog(null, "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù. Ä«¿îÅÍ¿¡¼­ °áÁ¦ÇØÁÖ¼¼¿ä.");
+				JOptionPane.showMessageDialog(null, "ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤. ì¹´ìš´í„°ì—ì„œ ê²°ì œí•´ì£¼ì„¸ìš”.");
 				dispose();
 			}
 		});
@@ -66,7 +66,7 @@ public class UserGUI extends JFrame {
 		getContentPane().add(panel_1, BorderLayout.NORTH);
 
 		JPanel panel_4 = new JPanel();
-		JLabel starttimelabel = new JLabel("½ÃÀÛ ½Ã°£ : ");
+		JLabel starttimelabel = new JLabel("ì‹œì‘ ì‹œê°„ : ");
 		panel_4.add(starttimelabel);
 		String startt = timeFormat.format(new Date(start));
 		JLabel starttime = new JLabel(startt);
@@ -74,18 +74,18 @@ public class UserGUI extends JFrame {
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(new GridLayout(1, 2));
-		JButton goodsbtn = new JButton("¸ÅÁ¡");
-		JButton chatbtn = new JButton("°ü¸®ÀÚ¿Í Ã¤ÆÃ");
+		JButton goodsbtn = new JButton("ë§¤ì ");
+		JButton chatbtn = new JButton("ê´€ë¦¬ìì™€ ì±„íŒ…");
 		panel_5.add(goodsbtn);
 		panel_5.add(chatbtn);
 		panel_4.add(panel_5);
 		getContentPane().add(panel_4, BorderLayout.CENTER);
 
-		// ¹öÆ° ÀÌº¥Æ®
+		// ë²„íŠ¼ ì´ë²¤íŠ¸
 		goodsbtn.addActionListener(new MenuMgrEvent());
 		chatbtn.addActionListener(new ChatMgrEvent());
 
-		// ¿ìÃø »ó´Ü¿¡ ÇÁ·¹ÀÓ Ã¢ ¶ç¿ì±â
+		// ìš°ì¸¡ ìƒë‹¨ì— í”„ë ˆì„ ì°½ ë„ìš°ê¸°
 		Dimension frameSize = this.getSize();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((screenSize.width - frameSize.width), (screenSize.height - screenSize.height));
@@ -94,7 +94,7 @@ public class UserGUI extends JFrame {
 		setResizable(false);
 	}
 
-	// ¸Å´º ¹öÆ°À» ´©¸£¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+	// ë§¤ë‰´ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
 	private class MenuMgrEvent implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -103,7 +103,7 @@ public class UserGUI extends JFrame {
 		}
 	}
 
-	// Ã¤ÆÃ ¹öÆ°À» ´©¸£¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+	// ì±„íŒ… ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
 	private class ChatMgrEvent implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

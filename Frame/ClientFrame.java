@@ -1,4 +1,4 @@
-//Ã¤ÆÃ Å¬¶óÀÌ¾ğÆ® ¼­¹ö
+//ì±„íŒ… í´ë¼ì´ì–¸íŠ¸ ì„œë²„
 package pc;
 import java.awt.BorderLayout;
 import java.awt.event.*;
@@ -9,7 +9,7 @@ import javax.swing.*;
 
 
 @SuppressWarnings({ "serial", "unused" })
-//Å¬¶óÀÌ¾ğÆ® ÇÁ·¹ÀÓ »ı¼º
+//í´ë¼ì´ì–¸íŠ¸ í”„ë ˆì„ ìƒì„±
 public class ClientFrame extends JFrame{
 
 	JTextArea textArea; 
@@ -28,21 +28,21 @@ public class ClientFrame extends JFrame{
 	String servername;
 	String clientname;
 	
-	//ipÁÖ¼Ò¿Í portnum ÆÄ¶ó¹ÌÅÍ·Î ¹Ş±â
+	//ipì£¼ì†Œì™€ portnum íŒŒë¼ë¯¸í„°ë¡œ ë°›ê¸°
 	public ClientFrame(String ip, String port) {
 		this.ip = ip;
 		this.port = Integer.parseInt(port);
 		
-		//Á¦¸ñ »ı¼º
+		//ì œëª© ìƒì„±
 		setTitle("Client");
 		setBounds(450, 400, 500, 350);
 
 		textArea = new JTextArea();		
-		textArea.setEditable(false); //¾²±â ±İÁö
+		textArea.setEditable(false); //ì“°ê¸° ê¸ˆì§€
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		add(scrollPane,BorderLayout.CENTER);
 
-		//ÆĞ³Î »ı¼º
+		//íŒ¨ë„ ìƒì„±
 		JPanel msgPanel = new JPanel();
 		JPanel msgPanel_btn = new JPanel();
 
@@ -50,11 +50,11 @@ public class ClientFrame extends JFrame{
 
 		tfMsg = new JTextField();
 
-		//º¸³»±â, Á¾·á ¹öÆ° »ı¼º
+		//ë³´ë‚´ê¸°, ì¢…ë£Œ ë²„íŠ¼ ìƒì„±
 		btnSend = new JButton("send");
 		btnExit	= new JButton("exit");
 		
-		//ÆĞ³Î¿¡ ¹öÆ° ¿Ã¸®±â
+		//íŒ¨ë„ì— ë²„íŠ¼ ì˜¬ë¦¬ê¸°
 		msgPanel_btn.add(btnSend, BorderLayout.WEST);
 		msgPanel_btn.add(btnExit, BorderLayout.EAST);
 
@@ -64,52 +64,52 @@ public class ClientFrame extends JFrame{
 		add(msgPanel,BorderLayout.SOUTH);
 		
 
-		//send ¹öÆ° Å¬¸¯¿¡ ¹İÀÀÇÏ´Â ¸®½º³Ê Ãß°¡
+		//send ë²„íŠ¼ í´ë¦­ì— ë°˜ì‘í•˜ëŠ” ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
 		btnSend.addActionListener(new ActionListener() {			
 
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-				//sendmessage ÇÔ¼ö ½ÇÇà
+				//sendmessage í•¨ìˆ˜ ì‹¤í–‰
 				sendMessage();
 
 			}
 
 		});
 		
-		//exit ¹öÆ° Å¬¸¯¿¡ ¹İÀÀÇÏ´Â ¸®½º³Ê Ãß°¡
+		//exit ë²„íŠ¼ í´ë¦­ì— ë°˜ì‘í•˜ëŠ” ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
 		btnExit.addActionListener(new ActionListener() {
 					
 			public void actionPerformed(ActionEvent e) {
-				//Á¾·á Àü ÇÑ ¹ø ´õ ¹°¾îº¸±â
-				int exitOption = JOptionPane.showConfirmDialog(null, "Á¢¼ÓÀ» ²÷À¸½Ã°Ú½À´Ï±î?", "Á¢¼Ó Á¾·á", JOptionPane.YES_NO_OPTION);						
-				if (exitOption == JOptionPane.YES_OPTION) { //yes¹öÆ° Å¬¸¯½Ã Á¾·á
+				//ì¢…ë£Œ ì „ í•œ ë²ˆ ë” ë¬¼ì–´ë³´ê¸°
+				int exitOption = JOptionPane.showConfirmDialog(null, "ì ‘ì†ì„ ëŠìœ¼ì‹œê² ìŠµë‹ˆê¹Œ?", "ì ‘ì† ì¢…ë£Œ", JOptionPane.YES_NO_OPTION);						
+				if (exitOption == JOptionPane.YES_OPTION) { //yesë²„íŠ¼ í´ë¦­ì‹œ ì¢…ë£Œ
 					try {
-						//dis, dos, socket ´İ¾Æ¼­ ¿¬°á ²÷±â
+						//dis, dos, socket ë‹«ì•„ì„œ ì—°ê²° ëŠê¸°
 						dis.close();
 						dos.close();
 						socket.close();
 					} catch (Exception e1) {
-						textArea.append("Á¢¼Ó Á¾·á¿¡ ½ÇÆĞÇß½À´Ï´Ù.\n");
+						textArea.append("ì ‘ì† ì¢…ë£Œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.\n");
 					}
 				}
-				else if ((exitOption == JOptionPane.NO_OPTION) || (exitOption == JOptionPane.CLOSED_OPTION)) //no¹öÆ° Å¬¸¯ÇÏ°Å³ª Ã¢À» ´İÀ» °æ¿ì return
+				else if ((exitOption == JOptionPane.NO_OPTION) || (exitOption == JOptionPane.CLOSED_OPTION)) //noë²„íŠ¼ í´ë¦­í•˜ê±°ë‚˜ ì°½ì„ ë‹«ì„ ê²½ìš° return
 					return; 
-				//Ã¢ ´İ±â
+				//ì°½ ë‹«ê¸°
 				dispose();
 				}
 		});
 
-		//¿£ÅÍÅ° ´­·¶À» ¶§ ¹İÀÀÇÏ±â
+		//ì—”í„°í‚¤ ëˆŒë €ì„ ë•Œ ë°˜ì‘í•˜ê¸°
 		tfMsg.addKeyListener(new KeyAdapter() {
 
-			//Å°º¸µå¿¡¼­ Å° ÇÏ³ª¸¦ ´­·¶À»¶§ ÀÚµ¿À¸·Î ½ÇÇàµÇ´Â ¸Ş¼Òµå : Äİ¹é ¸Ş¼Òµå
+			//í‚¤ë³´ë“œì—ì„œ í‚¤ í•˜ë‚˜ë¥¼ ëˆŒë €ì„ë•Œ ìë™ìœ¼ë¡œ ì‹¤í–‰ë˜ëŠ” ë©”ì†Œë“œ : ì½œë°± ë©”ì†Œë“œ
 			@Override
 
 			public void keyPressed(KeyEvent e) {				
 				super.keyPressed(e);
 
-			//ÀÔ·Â¹ŞÀº Å°°¡ ¿£ÅÍÀÎÁö ¾Ë¾Æ³»±â, KeyEvent °´Ã¼°¡ Å°¿¡´ëÇÑ Á¤º¸ °®°íÀÖÀ½
+			//ì…ë ¥ë°›ì€ í‚¤ê°€ ì—”í„°ì¸ì§€ ì•Œì•„ë‚´ê¸°, KeyEvent ê°ì²´ê°€ í‚¤ì—ëŒ€í•œ ì •ë³´ ê°–ê³ ìˆìŒ
 				int keyCode = e.getKeyCode();
 				switch(keyCode) {
 				case KeyEvent.VK_ENTER:
@@ -124,12 +124,12 @@ public class ClientFrame extends JFrame{
 		tfMsg.requestFocus();
 		
 	
-		//¼­¹ö¿Í ¿¬°áÇÏ´Â ³×Æ®¿öÅ© ÀÛ¾÷ : Å¬¶óÀÌ¾ğÆ® ½º·¹µå °´Ã¼ »ı¼º ¹× ½ÇÇà
+		//ì„œë²„ì™€ ì—°ê²°í•˜ëŠ” ë„¤íŠ¸ì›Œí¬ ì‘ì—… : í´ë¼ì´ì–¸íŠ¸ ìŠ¤ë ˆë“œ ê°ì²´ ìƒì„± ë° ì‹¤í–‰
 		ClientThread clientThread = new ClientThread();
-		clientThread.setDaemon(true); //¸ŞÀÎ ³¡³ª¸é °°ÀÌ Á¾·á
+		clientThread.setDaemon(true); //ë©”ì¸ ëë‚˜ë©´ ê°™ì´ ì¢…ë£Œ
 		clientThread.start();
 		
-		//Å¬¶óÀÌ¾ğÆ® ÇÁ·¹ÀÓ¿¡ window(Ã¢) °ü·Ã ¸®½º³Ê Ãß°¡
+		//í´ë¼ì´ì–¸íŠ¸ í”„ë ˆì„ì— window(ì°½) ê´€ë ¨ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
 		addWindowListener(new WindowAdapter() {			
 			@Override 
 			public void windowClosing(WindowEvent e) {				
@@ -140,64 +140,64 @@ public class ClientFrame extends JFrame{
 					if(dis != null) dis.close();
 					if(socket != null) socket.close();
 				} catch (IOException e1) {					
-					textArea.append("¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.\n");
+					textArea.append("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.\n");
 				}
 			}			
 		});
 	}
 		
-		//Å¬¶óÀÌ¾ğÆ®½º·¹µå
+		//í´ë¼ì´ì–¸íŠ¸ìŠ¤ë ˆë“œ
 		class ClientThread extends Thread {
 			public void run() {
 				try { 
-					//´Ğ³×ÀÓ ÀÔ·Â ¹Ş±â
-					//clientname = JOptionPane.showInputDialog("´Ğ³×ÀÓÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.\n", JOptionPane.INFORMATION_MESSAGE);		
+					//ë‹‰ë„¤ì„ ì…ë ¥ ë°›ê¸°
+					//clientname = JOptionPane.showInputDialog("ë‹‰ë„¤ì„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.\n", JOptionPane.INFORMATION_MESSAGE);		
 					clientname = UserGUI.name;
-					//ÀÔ·Â¹ŞÀº ipÁÖ¼Ò¿Í portnumÀ¸·Î socket »ı¼º
+					//ì…ë ¥ë°›ì€ ipì£¼ì†Œì™€ portnumìœ¼ë¡œ socket ìƒì„±
 					socket = new Socket("127.0.0.1", port); 
-					textArea.append("¼­¹ö¿¡ Á¢¼ÓµÆ½À´Ï´Ù.\n");
+					textArea.append("ì„œë²„ì— ì ‘ì†ëìŠµë‹ˆë‹¤.\n");
 
-					//µ¥ÀÌÅÍ Àü¼ÛÀ» À§ÇÑ ½ºÆ®¸² »ı¼º
+					//ë°ì´í„° ì „ì†¡ì„ ìœ„í•œ ìŠ¤íŠ¸ë¦¼ ìƒì„±
 					InputStream is = socket.getInputStream();
 					OutputStream os = socket.getOutputStream();
 
-					//º¸Á¶½ºÆ®¸²À¸·Î ¸¸µé¾î¼­ µ¥ÀÌÅÍÀü¼Û ÀÛ¾÷ ÆíÇÏ°Ô 
+					//ë³´ì¡°ìŠ¤íŠ¸ë¦¼ìœ¼ë¡œ ë§Œë“¤ì–´ì„œ ë°ì´í„°ì „ì†¡ ì‘ì—… í¸í•˜ê²Œ 
 					dis = new DataInputStream(is);
 					dos = new DataOutputStream(os);	
 
-					//ÀÔ·Â¹ŞÀº ´Ğ³×ÀÓ write
+					//ì…ë ¥ë°›ì€ ë‹‰ë„¤ì„ write
 					dos.writeUTF(clientname);
-					//server¿¡¼­ ÀÔ·Â¹Ş´Â ´Ğ³×ÀÓ read
+					//serverì—ì„œ ì…ë ¥ë°›ëŠ” ë‹‰ë„¤ì„ read
 					servername = dis.readUTF();
 
-					while(true) {//»ó´ë¹æ ¸Ş½ÃÁö ¹Ş±â
+					while(true) {//ìƒëŒ€ë°© ë©”ì‹œì§€ ë°›ê¸°
 						String msg = dis.readUTF();
-						//TextArea¿¡ Ç¥½Ã
+						//TextAreaì— í‘œì‹œ
 						textArea.append(" [" + servername + "] : " + msg + "\n");
 						textArea.setCaretPosition(textArea.getText().length());
 					}
 
 				} catch (UnknownHostException e) {
-					textArea.append("¼­¹ö ÁÖ¼Ò°¡ ÀÌ»óÇÕ´Ï´Ù.\n");
+					textArea.append("ì„œë²„ ì£¼ì†Œê°€ ì´ìƒí•©ë‹ˆë‹¤.\n");
 				} catch (IOException e) {
-					textArea.append("¼­¹ö¿Í ¿¬°áÀÌ ²÷°å½À´Ï´Ù.\n");
+					textArea.append("ì„œë²„ì™€ ì—°ê²°ì´ ëŠê²¼ìŠµë‹ˆë‹¤.\n");
 					e.printStackTrace();
 				}
 			}
 		}
 		
 
-		//¸Ş½ÃÁö Àü¼ÛÇÏ´Â ±â´É ÇÔ¼ö
+		//ë©”ì‹œì§€ ì „ì†¡í•˜ëŠ” ê¸°ëŠ¥ í•¨ìˆ˜
 		void sendMessage() {	
-		String msg = tfMsg.getText(); //TextField¿¡ ½áÀÖ´Â ±Û¾¾¸¦ ¾ò¾î¿À±â
-		tfMsg.setText(""); //ÀÔ·Â ÈÄ ºóÄ­À¸·Î
+		String msg = tfMsg.getText(); //TextFieldì— ì¨ìˆëŠ” ê¸€ì”¨ë¥¼ ì–»ì–´ì˜¤ê¸°
+		tfMsg.setText(""); //ì…ë ¥ í›„ ë¹ˆì¹¸ìœ¼ë¡œ
 		
-		//TextArea¿¡ Ç¥½Ã
+		//TextAreaì— í‘œì‹œ
 		textArea.append(" [" + clientname + "] : " + msg + "\n");
-		//½ºÅ©·Ñ µû¶ó°¡°Ô ÇÏ±â
+		//ìŠ¤í¬ë¡¤ ë”°ë¼ê°€ê²Œ í•˜ê¸°
 		textArea.setCaretPosition(textArea.getText().length()); 
 		
-		//Server¿¡ ¸Ş½ÃÁö Àü¼ÛÇÏ±â
+		//Serverì— ë©”ì‹œì§€ ì „ì†¡í•˜ê¸°
 		Thread t = new Thread() {
 			@Override
 			public void run() {
@@ -205,7 +205,7 @@ public class ClientFrame extends JFrame{
 					dos.writeUTF(msg);
 					dos.flush();
 				} catch (IOException e) {
-					textArea.append("¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.\n");
+					textArea.append("ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.\n");
 				}
 			}
 		};		

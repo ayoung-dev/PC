@@ -12,13 +12,13 @@ import java.sql.SQLException;
 
 public class AdminMenuGUI extends JFrame {
 
-	// ÄÁÅ×ÀÌ³Ê °´Ã¼
+	// ì»¨í…Œì´ë„ˆ ê°ì²´
 	Container container = getContentPane();
 
-	// Á¶È¸¹öÆ°À» ´­·¶´ÂÁö È®ÀÎ
+	// ì¡°íšŒë²„íŠ¼ì„ ëˆŒë €ëŠ”ì§€ í™•ì¸
 	private boolean doSearch = false;
 
-	// µğºñ¿¡¼­ ¼±ÅÃµÈ °Ë»öµÈ ¸â¹ö¸¦ ÀúÀå
+	// ë””ë¹„ì—ì„œ ì„ íƒëœ ê²€ìƒ‰ëœ ë©¤ë²„ë¥¼ ì €ì¥
 	private ArrayList<Menu> list = new ArrayList<Menu>();
 	private DefaultTableModel dtm;
 	private JTable jt;
@@ -32,30 +32,30 @@ public class AdminMenuGUI extends JFrame {
 		new AdminMenuGUI();
 	}
 
-	// ManageMember»ı¼ºÀÚ ½ÃÀÛ
+	// ManageMemberìƒì„±ì ì‹œì‘
 	@SuppressWarnings("serial")
 	public AdminMenuGUI() {
-		// ÄÃ·³³×ÀÓ ÁöÁ¤
-		String[] culumnName = { "Á¾·ù", "Ç°¸í", "°¡°İ", "Àç°í", "ÀÔ°íÀÏ", "ºñ°í" };
-		String[] typeName = {"°úÀÚ", "À½·á¼ö", "½Ä»ç·ù", "¶ó¸é"};
+		// ì»¬ëŸ¼ë„¤ì„ ì§€ì •
+		String[] culumnName = { "ì¢…ë¥˜", "í’ˆëª…", "ê°€ê²©", "ì¬ê³ ", "ì…ê³ ì¼", "ë¹„ê³ " };
+		String[] typeName = {"ê³¼ì", "ìŒë£Œìˆ˜", "ì‹ì‚¬ë¥˜", "ë¼ë©´"};
 		
-		// ÄÄÆ÷³ÍÆ® ¼±¾ğ
-		JFrame menuFrame = new JFrame("Àç°í Á¶È¸");
+		// ì»´í¬ë„ŒíŠ¸ ì„ ì–¸
+		JFrame menuFrame = new JFrame("ì¬ê³  ì¡°íšŒ");
 		dtm = new DefaultTableModel(culumnName, 0) {
-			// ¼¿ÆíÁıÀ» ¸øÇÏ°Ô ÇÏ´Â ÇÊµå
+			// ì…€í¸ì§‘ì„ ëª»í•˜ê²Œ í•˜ëŠ” í•„ë“œ
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
 
-		JLabel labelType = new JLabel("Á¾·ù : ", JLabel.RIGHT); // ¿À¸¥ÂÊÀ¸·Î Á¤·ÄµÊ
-		JLabel labelProduct = new JLabel("Á¦Ç°¸í : ", JLabel.RIGHT);
-		JLabel labelPrice = new JLabel("°¡°İ : ", JLabel.RIGHT);
-		JLabel labelCount = new JLabel("Àç°í·® : ", JLabel.RIGHT);
-		JLabel labelDate = new JLabel("ÀÔ°íÀÏ : ", JLabel.RIGHT);
-		JLabel labelRemarks = new JLabel("ºñ°í : ", JLabel.RIGHT);
+		JLabel labelType = new JLabel("ì¢…ë¥˜ : ", JLabel.RIGHT); // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì •ë ¬ë¨
+		JLabel labelProduct = new JLabel("ì œí’ˆëª… : ", JLabel.RIGHT);
+		JLabel labelPrice = new JLabel("ê°€ê²© : ", JLabel.RIGHT);
+		JLabel labelCount = new JLabel("ì¬ê³ ëŸ‰ : ", JLabel.RIGHT);
+		JLabel labelDate = new JLabel("ì…ê³ ì¼ : ", JLabel.RIGHT);
+		JLabel labelRemarks = new JLabel("ë¹„ê³  : ", JLabel.RIGHT);
 
-		// Àç°í Ãß°¡ ÀÔ·Â ÇÊµå
+		// ì¬ê³  ì¶”ê°€ ì…ë ¥ í•„ë“œ
 		comboType = new JComboBox<String>(typeName);
 
 		textFieldProduct = new JTextField(14);
@@ -63,7 +63,7 @@ public class AdminMenuGUI extends JFrame {
 		textFieldCount = new JTextField(14);
 		textFieldDate = new JTextField(14);
 		textFieldRemarks = new JTextField(14);
-		// °Ë»ö ÇÊµå
+		// ê²€ìƒ‰ í•„ë“œ
 		typeField = new JTextField(10);
 		productField = new JTextField(14);
 
@@ -77,13 +77,13 @@ public class AdminMenuGUI extends JFrame {
 		JPanel east = new JPanel();
 		JPanel panelL = new JPanel();
 		JPanel panelLU = new JPanel();
-		JLabel productLabel = new JLabel("Á¦Ç°¸í");
-		JButton searchBtn = new JButton("   ÀüÃ¼ Á¶È¸   ");
-		JButton insertBtn = new JButton("Ãß °¡");
-		JButton deleteBtn = new JButton("»è Á¦");
-		JButton tableSearchBtn2 = new JButton("°Ë »ö");
+		JLabel productLabel = new JLabel("ì œí’ˆëª…");
+		JButton searchBtn = new JButton("   ì „ì²´ ì¡°íšŒ   ");
+		JButton insertBtn = new JButton("ì¶” ê°€");
+		JButton deleteBtn = new JButton("ì‚­ ì œ");
+		JButton tableSearchBtn2 = new JButton("ê²€ ìƒ‰");
 
-		// ÄÄÆ÷³ÍÆ® °áÇÕºÎ
+		// ì»´í¬ë„ŒíŠ¸ ê²°í•©ë¶€
 		center.add(panel);
 		north.add(productLabel);
 		north.add(productField);
@@ -92,13 +92,13 @@ public class AdminMenuGUI extends JFrame {
 		north.add(searchBtn);
 		east.add(panelL);
 
-		/** panelL ±¸¼º */
+		/** panelL êµ¬ì„± */
 		panelL.setLayout(new BorderLayout());
 		panelL.add("Center", panelLU);
 
-		/* ¿À¸¥ÂÊ »ó´ÜºÎ (Àç°í ¹°Ç° Ãß°¡ Æû) */
+		/* ì˜¤ë¥¸ìª½ ìƒë‹¨ë¶€ (ì¬ê³  ë¬¼í’ˆ ì¶”ê°€ í¼) */
 
-		panelLU.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED), "Àç°í Ãß°¡")); // ÀüÃ¼¸¦ ¹­¾îÁÜ
+		panelLU.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED), "ì¬ê³  ì¶”ê°€")); // ì „ì²´ë¥¼ ë¬¶ì–´ì¤Œ
 
 		panelLU.setLayout(new BorderLayout());
 		panelLU.setPreferredSize(new Dimension(200, 290));
@@ -106,7 +106,7 @@ public class AdminMenuGUI extends JFrame {
 		panelLU.add("Center", panelTextField);
 		panelLU.add("South", insertBtn);
 
-		// panelLabel ±¸¼º
+		// panelLabel êµ¬ì„±
 		panelLabel.setLayout(new GridLayout(6, 1, 5, 8));
 		panelLabel.add(labelType);
 		panelLabel.add(labelProduct);
@@ -115,7 +115,7 @@ public class AdminMenuGUI extends JFrame {
 		panelLabel.add(labelDate);
 		panelLabel.add(labelRemarks);
 
-		// panelTextField ±¸¼º
+		// panelTextField êµ¬ì„±
 		panelTextField.setLayout(new GridLayout(6, 1, 5, 8));
 		panelTextField.add(comboType);
 		panelTextField.add(textFieldProduct);
@@ -128,17 +128,17 @@ public class AdminMenuGUI extends JFrame {
 		menuFrame.add(panel, "Center");
 		menuFrame.add(east, "East");
 
-		// ¹öÆ° ÀÌº¥Æ® ¼¼ÆÃ
+		// ë²„íŠ¼ ì´ë²¤íŠ¸ ì„¸íŒ…
 		tableSearchBtn2.addActionListener(new ProductSearchEvent());
 		searchBtn.addActionListener(new SearchEvent());
 		insertBtn.addActionListener(new InsertEvent());
 		deleteBtn.addActionListener(new DeleteEvent());
 
-		// ÇÁ·¹ÀÓ À§Ä¡ ¼¼ÆÃ
+		// í”„ë ˆì„ ìœ„ì¹˜ ì„¸íŒ…
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height / 7;
 
-		// ÇÁ·¹ÀÓÀÇ ±âº»ÀûÀÎ À§Ä¡¿Í »çÀÌÁî ¼¼ÆÃ
+		// í”„ë ˆì„ì˜ ê¸°ë³¸ì ì¸ ìœ„ì¹˜ì™€ ì‚¬ì´ì¦ˆ ì„¸íŒ…
 		menuFrame.setResizable(false);
 		menuFrame.setBounds(width, height, 700, 370);
 		menuFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -146,7 +146,7 @@ public class AdminMenuGUI extends JFrame {
 
 	}
 
-	// Á¶È¸¹öÆ°À» ´©¸¦½Ã¿¡ menuInfoÅ×ÀÌºí¿¡¼­ DB¸¦ÀĞ¾î¿Í¼­ Å×ÀÌºí¿¡ º¸¿©ÁÖ´Â ÀÌº¥Æ®Ã³¸® Å¬·¡½º
+	// ì¡°íšŒë²„íŠ¼ì„ ëˆ„ë¥¼ì‹œì— menuInfoí…Œì´ë¸”ì—ì„œ DBë¥¼ì½ì–´ì™€ì„œ í…Œì´ë¸”ì— ë³´ì—¬ì£¼ëŠ” ì´ë²¤íŠ¸ì²˜ë¦¬ í´ë˜ìŠ¤
 	private class SearchEvent implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
@@ -158,11 +158,11 @@ public class AdminMenuGUI extends JFrame {
 			try {
 				LoginGUI.ac.readMenu(list);
 			} catch (Exception e1) {
-				JOptionPane.showMessageDialog(null, "Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì¡°íšŒí•  ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
 				e1.printStackTrace();
 			}
 			
-			// µ¥ÀÌÅÍ»èÁ¦
+			// ë°ì´í„°ì‚­ì œ
 			resetRow();
 
 			for (int i = 0; i < list.size(); i++) {
@@ -178,15 +178,15 @@ public class AdminMenuGUI extends JFrame {
 			}
 		}
 	}
-	// Á¶È¸¹öÆ°À» ´©¸¦½Ã¿¡ menuInfoÅ×ÀÌºí¿¡¼­ DB¸¦ÀĞ¾î¿Í¼­ Å×ÀÌºí¿¡ º¸¿©ÁÖ´Â ÀÌº¥Æ®Ã³¸® Å¬·¡½ºÁ¾·á
+	// ì¡°íšŒë²„íŠ¼ì„ ëˆ„ë¥¼ì‹œì— menuInfoí…Œì´ë¸”ì—ì„œ DBë¥¼ì½ì–´ì™€ì„œ í…Œì´ë¸”ì— ë³´ì—¬ì£¼ëŠ” ì´ë²¤íŠ¸ì²˜ë¦¬ í´ë˜ìŠ¤ì¢…ë£Œ
 
 	
-	// ¸Ş´º Ç°¸ñ»èÁ¦ »èÁ¦¸¦ À§ÇÑ ÀÌº¥Æ® Å¬·¡½º ½ÃÀÛ
+	// ë©”ë‰´ í’ˆëª©ì‚­ì œ ì‚­ì œë¥¼ ìœ„í•œ ì´ë²¤íŠ¸ í´ë˜ìŠ¤ ì‹œì‘
 	private class DeleteEvent implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int index = jt.getSelectedRow();
 			if (index != -1) {
-				// getSelectedRow() - ¼±ÅÃµÈ Çà/ 1¹øÂ° ¿­
+				// getSelectedRow() - ì„ íƒëœ í–‰/ 1ë²ˆì§¸ ì—´
 				String product = (String) dtm.getValueAt(jt.getSelectedRow(), 1);
 				try {
 					LoginGUI.ac.delMenu(product);
@@ -200,17 +200,17 @@ public class AdminMenuGUI extends JFrame {
 					}
 				}
 				dtm.removeRow(jt.getSelectedRow());
-				JOptionPane.showMessageDialog(null, "Ç°¸ñ " + product + "¸¦ Á¦°ÅÇß½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "í’ˆëª© " + product + "ë¥¼ ì œê±°í–ˆìŠµë‹ˆë‹¤.");
 
 			} else {
-				JOptionPane.showMessageDialog(null, "Å×ÀÌºí¿¡¼­ »èÁ¦ÇÒ °ªÀ» ¸ÕÀú ¼±ÅÃ ÇÏ¼¼¿ä");
+				JOptionPane.showMessageDialog(null, "í…Œì´ë¸”ì—ì„œ ì‚­ì œí•  ê°’ì„ ë¨¼ì € ì„ íƒ í•˜ì„¸ìš”");
 			}
 
 		}
 	}
-	// ¸Ş´º Ç°¸ñ»èÁ¦ »èÁ¦¸¦ À§ÇÑ ÀÌº¥Æ® Å¬·¡½º Á¾·á
+	// ë©”ë‰´ í’ˆëª©ì‚­ì œ ì‚­ì œë¥¼ ìœ„í•œ ì´ë²¤íŠ¸ í´ë˜ìŠ¤ ì¢…ë£Œ
 	
-	// ¼ö¿ùÇÏ°Ô »èÁ¦ÇÏ±â À§ÇØ Ç°¸ñÀ» °Ë»öÇÏ°í »èÁ¦ÇÏ±â À§ÇÑ ÀÌº¥Æ® Ã³¸® Å¬·¡½º ½ÃÀÛ
+	// ìˆ˜ì›”í•˜ê²Œ ì‚­ì œí•˜ê¸° ìœ„í•´ í’ˆëª©ì„ ê²€ìƒ‰í•˜ê³  ì‚­ì œí•˜ê¸° ìœ„í•œ ì´ë²¤íŠ¸ ì²˜ë¦¬ í´ë˜ìŠ¤ ì‹œì‘
 	private class ProductSearchEvent implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -218,7 +218,7 @@ public class AdminMenuGUI extends JFrame {
 			String searchProduct = productField.getText();
 			if (doSearch == true) {
 				if (searchProduct.equals("")) {
-					JOptionPane.showMessageDialog(null, "°Ë»öÇÒ Ç°¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+					JOptionPane.showMessageDialog(null, "ê²€ìƒ‰í•  í’ˆëª©ì„ ì…ë ¥í•˜ì„¸ìš”");
 				} else {
 					for (int i = 0; i < list.size(); i++) {
 						if (list.get(i).getProduct().equals(searchProduct)) {
@@ -236,29 +236,29 @@ public class AdminMenuGUI extends JFrame {
 					}
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Á¶È¸ ¸ÕÀú Å¬¸¯ÇØÁÖ½Ê½Ã¿À");
+				JOptionPane.showMessageDialog(null, "ì¡°íšŒ ë¨¼ì € í´ë¦­í•´ì£¼ì‹­ì‹œì˜¤");
 			}
 		}
 	}
 
 
-	// Ãß°¡ ¹öÆ°À» ´©¸£¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+	// ì¶”ê°€ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
 	private class InsertEvent implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			int flag = 0;
 
 			if (textFieldProduct.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "Ç°¸íÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À");
+				JOptionPane.showMessageDialog(null, "í’ˆëª…ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤");
 			} else if (textFieldPrice.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "°¡°İÀ» ÀÔ·ÂÇÏ½Ê½Ã¿À");
+				JOptionPane.showMessageDialog(null, "ê°€ê²©ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤");
 			} else if (textFieldCount.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "Àç°í·®À» ÀÔ·ÂÇÏ½Ê½Ã¿À");
+				JOptionPane.showMessageDialog(null, "ì¬ê³ ëŸ‰ì„ ì…ë ¥í•˜ì‹­ì‹œì˜¤");
 			} else {
-				// ºñ¹Ğ¹øÈ£ ÇØ½¬¾ÏÈ£ »ı·«
+				// ë¹„ë°€ë²ˆí˜¸ í•´ì‰¬ì•”í˜¸ ìƒëµ
 				try {
 					LoginGUI.ac.insertMenu(comboType.getSelectedItem().toString(), textFieldProduct.getText(), textFieldPrice.getText(),
 							textFieldCount.getText(), textFieldDate.getText(), textFieldRemarks.getText());
-					JOptionPane.showMessageDialog(null,"Ãß°¡µÇ¾ú½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
 					
 					textFieldProduct.setText("");
 					textFieldPrice.setText("");
@@ -270,14 +270,14 @@ public class AdminMenuGUI extends JFrame {
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Àç°í µî·Ï¿¡ ½ÇÆĞÇÏ¼Ì½À´Ï´Ù");
+					JOptionPane.showMessageDialog(null, "ì¬ê³  ë“±ë¡ì— ì‹¤íŒ¨í•˜ì…¨ìŠµë‹ˆë‹¤");
 				}
 			}
 
 		}
 	}
 
-	// Å×ÀÌºíÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå ½ÃÀÛ
+	// í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ ì‹œì‘
 	private void resetRow() {
 		if (dtm.getRowCount() > 0) {
 			for (int i = dtm.getRowCount() - 1; i > -1; i--) {
@@ -285,6 +285,6 @@ public class AdminMenuGUI extends JFrame {
 			}
 		}
 	}
-	// /Å×ÀÌºíÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå Á¾·á
+	// /í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ ì¢…ë£Œ
 
 }

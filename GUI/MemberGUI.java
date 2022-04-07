@@ -10,7 +10,7 @@ public class MemberGUI extends JFrame {
 	public static DefaultTableModel model;
 
 	public MemberGUI() {
-		setTitle("È¸¿ø Á¶È¸");
+		setTitle("íšŒì› ì¡°íšŒ");
 		setBounds(10, 50, 600, 550);
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -18,41 +18,41 @@ public class MemberGUI extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
 		
-		//ÀÌ¸§, ¾ÆÀÌµğ¸¦ ¼±ÅÃÇÒ ¼ö ÀÖ´Â ÄŞº¸¹Ú½º »ı¼º
+		//ì´ë¦„, ì•„ì´ë””ë¥¼ ì„ íƒí•  ìˆ˜ ìˆëŠ” ì½¤ë³´ë°•ìŠ¤ ìƒì„±
 		JComboBox comboBox = new JComboBox(); 
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ÀÌ¸§", "¾ÆÀÌµğ"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ì´ë¦„", "ì•„ì´ë””"}));
 		comboBox.setBackground(Color.white);
 		panel_1.add(comboBox);
 		
-		//°Ë»öÃ¢ ¸¸µé±â
-		JTextField searchtextField = new JTextField("°Ë»öÇÒ ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+		//ê²€ìƒ‰ì°½ ë§Œë“¤ê¸°
+		JTextField searchtextField = new JTextField("ê²€ìƒ‰í•  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 		panel_1.add(searchtextField);
-		searchtextField.setColumns(15); //°Ë»öÃ¢ °¡·Î »çÀÌÁî ¼³Á¤
-		searchtextField.addMouseListener(new MouseAdapter(){  //ÅØ½ºÆ®ÇÊµå Å¬¸¯ ½Ã ³»¿ë ÃÊ±âÈ­
+		searchtextField.setColumns(15); //ê²€ìƒ‰ì°½ ê°€ë¡œ ì‚¬ì´ì¦ˆ ì„¤ì •
+		searchtextField.addMouseListener(new MouseAdapter(){  //í…ìŠ¤íŠ¸í•„ë“œ í´ë¦­ ì‹œ ë‚´ìš© ì´ˆê¸°í™”
 			public void mouseClicked(MouseEvent e){ 
 				   searchtextField.setText(""); 
 			   } 
 		});
 		
-		//"°Ë»ö"¹öÆ° ¸¸µé±â
-		JButton searchbutton = new JButton("°Ë»ö"); 
-		JButton totalbutton = new JButton("ÀüÃ¼ °Ë»ö");
+		//"ê²€ìƒ‰"ë²„íŠ¼ ë§Œë“¤ê¸°
+		JButton searchbutton = new JButton("ê²€ìƒ‰"); 
+		JButton totalbutton = new JButton("ì „ì²´ ê²€ìƒ‰");
 		panel_1.add(searchbutton);
 		panel_1.add(totalbutton);
 		
-		//ÀúÀåµÈ È¸¿ø ¸®½ºÆ®°¡ ³ªÅ¸³ª´Â Å×ÀÌºí
-		String colNames[] = {"ÀÌ¸§", "¾ÆÀÌµğ", "ÀüÈ­¹øÈ£", "»ç¿ëÁß/»ç¿ëX", "¿ä±İ"}; //Å×ÀÌºí ³»¿ë ÀÌ¸§µé
+		//ì €ì¥ëœ íšŒì› ë¦¬ìŠ¤íŠ¸ê°€ ë‚˜íƒ€ë‚˜ëŠ” í…Œì´ë¸”
+		String colNames[] = {"ì´ë¦„", "ì•„ì´ë””", "ì „í™”ë²ˆí˜¸", "ì‚¬ìš©ì¤‘/ì‚¬ìš©X", "ìš”ê¸ˆ"}; //í…Œì´ë¸” ë‚´ìš© ì´ë¦„ë“¤
 		DefaultTableModel model = new DefaultTableModel(colNames, 0);
-		JTable table = new JTable(model); //ÁÖ¼Ò·Ï Å×ÀÌºí ¸¸µé±â
+		JTable table = new JTable(model); //ì£¼ì†Œë¡ í…Œì´ë¸” ë§Œë“¤ê¸°
 		panel.add(new JScrollPane(table));
 		
 		totalbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//ÀüÃ¼ ÁÖ¼Ò·Ï º¸ÀÌ±â
+				//ì „ì²´ ì£¼ì†Œë¡ ë³´ì´ê¸°
 				model.setNumRows(0);
 				int c = LoginGUI.ac.getCount();
 				if(c == 0) {
-					JOptionPane.showMessageDialog(null,"µî·ÏµÈ È¸¿øÀÌ ¾ø½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ íšŒì›ì´ ì—†ìŠµë‹ˆë‹¤.");
 				}
 				else {
 					for(int i=1; i<c; i++) {
@@ -69,13 +69,13 @@ public class MemberGUI extends JFrame {
 								money = paytime * 1000;
 							}
 							
-							if(LoginGUI.ac.getPerson(i).getState().equals("»ç¿ë°¡´É")) {
-								state = "»ç¿ëX";
+							if(LoginGUI.ac.getPerson(i).getState().equals("ì‚¬ìš©ê°€ëŠ¥")) {
+								state = "ì‚¬ìš©X";
 							} else {
 								state = LoginGUI.ac.getPerson(i).getState();
 							}
 							row = new Object[] {LoginGUI.ac.getPerson(i).getName(), LoginGUI.ac.getPerson(i).getId(), LoginGUI.ac.getPerson(i).getPhoneNum(), state, money};
-							model.addRow(row); // Ãß°¡
+							model.addRow(row); // ì¶”ê°€
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -86,7 +86,7 @@ public class MemberGUI extends JFrame {
 			}
 		});
 		
-		//°Ë»ö ¹öÆ°À» ´©¸£¸é ÇØ´ç ÁÖ¼Ò·Ï¸¸ Å×ÀÌºí¿¡ º¸ÀÌ°Ô ÇÑ´Ù.
+		//ê²€ìƒ‰ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í•´ë‹¹ ì£¼ì†Œë¡ë§Œ í…Œì´ë¸”ì— ë³´ì´ê²Œ í•œë‹¤.
 		searchbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				model.setNumRows(0);
@@ -94,10 +94,10 @@ public class MemberGUI extends JFrame {
 				int index = 0;
 				Object[] arr;
 				try {			
-					if(comboBox.getSelectedItem().toString() == "¾ÆÀÌµğ") {
+					if(comboBox.getSelectedItem().toString() == "ì•„ì´ë””") {
 						index=LoginGUI.ac.searchId(searchtextField.getText());
 					}
-					else if(comboBox.getSelectedItem().toString() == "ÀÌ¸§") {
+					else if(comboBox.getSelectedItem().toString() == "ì´ë¦„") {
 						index=LoginGUI.ac.searchName(searchtextField.getText());	
 					}
 					num = Integer.toString(index);
@@ -113,46 +113,46 @@ public class MemberGUI extends JFrame {
 						money = paytime * 1000;
 					}
 					phonenum = LoginGUI.ac.getPerson(index).getPhoneNum();
-					if(LoginGUI.ac.getPerson(index).getState().equals("»ç¿ë°¡´É")) {
-						state = "»ç¿ëX";
+					if(LoginGUI.ac.getPerson(index).getState().equals("ì‚¬ìš©ê°€ëŠ¥")) {
+						state = "ì‚¬ìš©X";
 					} else {
 						state = LoginGUI.ac.getPerson(index).getState();
 					}
 					arr = new Object[] {name, id, phonenum, state, money};
 					model.addRow(arr);
 				} catch (Exception e1) {
-					if(comboBox.getSelectedItem().toString() == "ÀÌ¸§") {
-						JOptionPane.showMessageDialog(null,"µî·ÏµÈ ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù.");	
+					if(comboBox.getSelectedItem().toString() == "ì´ë¦„") {
+						JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ ì´ë¦„ì´ ì—†ìŠµë‹ˆë‹¤.");	
 					}
-					else if(comboBox.getSelectedItem().toString() == "¾ÆÀÌµğ") {
-						JOptionPane.showMessageDialog(null,"µî·ÏµÈ ¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");	
+					else if(comboBox.getSelectedItem().toString() == "ì•„ì´ë””") {
+						JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.");	
 					}		
 				}						
 			}
 		});
 		JPanel panel1 = new JPanel();
 		getContentPane().add(panel1, BorderLayout.SOUTH);
-		JButton paybutton = new JButton("°áÁ¦ÇÏ±â");
+		JButton paybutton = new JButton("ê²°ì œí•˜ê¸°");
 		panel1.add(paybutton);
 		
-		//¹öÆ° Å¬¸¯ÇÏ¸é Á¤»êµÇ¾î¼­ ½Ã°£À» 0À¸·Î ÃÊ±âÈ­
+		//ë²„íŠ¼ í´ë¦­í•˜ë©´ ì •ì‚°ë˜ì–´ì„œ ì‹œê°„ì„ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 		paybutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int accountOption = JOptionPane.showConfirmDialog(null, "°áÁ¦ÇÏ½Ã°Ú½À´Ï±î?","°áÁ¦",JOptionPane.YES_NO_OPTION);
+				int accountOption = JOptionPane.showConfirmDialog(null, "ê²°ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?","ê²°ì œ",JOptionPane.YES_NO_OPTION);
 				if(accountOption == JOptionPane.YES_OPTION) {
 					try {
 						selectindex = table.getSelectedRow();
 						LoginGUI.ac.zerotime(selectindex + 1, 0);
-						LoginGUI.ac.logoutModify(selectindex + 1, "»ç¿ë°¡´É");
+						LoginGUI.ac.logoutModify(selectindex + 1, "ì‚¬ìš©ê°€ëŠ¥");
 						if(LoginGUI.ac.getPerson(selectindex + 1).getTime() == 0) {
-							JOptionPane.showMessageDialog(null,"°áÁ¦µÇ¾ú½À´Ï´Ù.");
+							JOptionPane.showMessageDialog(null,"ê²°ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 							LoginGUI.ac.salesmodify((int)model.getValueAt(selectindex, 4));
 							AdministratorGUI.salesLabel.setText(LoginGUI.ac.getSales());
 							model.setValueAt(0, selectindex, 4);
 						}
 					}
 					catch(Exception e1) {
-						JOptionPane.showMessageDialog(null,"°áÁ¦¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+						JOptionPane.showMessageDialog(null,"ê²°ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 					}
 				}
 				else if((accountOption == JOptionPane.NO_OPTION) || (accountOption == JOptionPane.CLOSED_OPTION)) {

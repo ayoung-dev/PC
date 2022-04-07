@@ -1,14 +1,14 @@
 package pc;
 
 public class Menu {
-	private String type;		//Á¾·ù ÇÊµå
-	private String product;		//Ç°¸í ÇÊµå
-	private String price; 		//°¡°İ ÇÊµå
-	private String count;		//Àç°í·® ÇÊµå
-	private String date;		//ÀÔ°íÀÏ ÇÊµå
-	private String remarks;		//ºñ°í ÇÊµå
+	private String type;		//ì¢…ë¥˜ í•„ë“œ
+	private String product;		//í’ˆëª… í•„ë“œ
+	private String price; 		//ê°€ê²© í•„ë“œ
+	private String count;		//ì¬ê³ ëŸ‰ í•„ë“œ
+	private String date;		//ì…ê³ ì¼ í•„ë“œ
+	private String remarks;		//ë¹„ê³  í•„ë“œ
 	
-	//"Á¾·ù", "Ç°¸í", "°¡°İ", "Àç°í·®", "ÀÔ°íÀÏ", "ºñ°í" 
+	//"ì¢…ë¥˜", "í’ˆëª…", "ê°€ê²©", "ì¬ê³ ëŸ‰", "ì…ê³ ì¼", "ë¹„ê³ " 
 	public Menu(String type, String product, String price, String count, String date, String remarks){ 
 		this.type=type;
 		this.product=product;

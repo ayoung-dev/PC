@@ -10,35 +10,35 @@ public class Management {
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
-	int num; // °³¼ö¸¦ ¹Ş´Âµ¥ ¾²ÀÓ
+	int num; // ê°œìˆ˜ë¥¼ ë°›ëŠ”ë° ì“°ì„
 	double time = 0;
 
-	public Management(String url, String con, String rootpw) throws Exception {// UI¿¡¼­ »ı¼ºÇÒ »ç¶÷ÀÇ ¼ö °¡Á®¿Í¼­ °´Ã¼ »ı¼º
+	public Management(String url, String con, String rootpw) throws Exception {// UIì—ì„œ ìƒì„±í•  ì‚¬ëŒì˜ ìˆ˜ ê°€ì ¸ì™€ì„œ ê°ì²´ ìƒì„±
 		Class.forName(url);
 		conn = DriverManager.getConnection(con, "root", rootpw);
 		stmt = conn.createStatement();
 	}
 
-	public int getCount() { // µî·ÏµÈ »ç¶÷ ¼ö Á¢±ÙÀÚ
+	public int getCount() { // ë“±ë¡ëœ ì‚¬ëŒ ìˆ˜ ì ‘ê·¼ì
 		try {
 			rs = stmt.executeQuery("select * from member;");
-			rs.last(); // Ä¿¼­°¡ ¸Ç ¸¶Áö¸· ÇàÀ¸·Î ÀÌµ¿
-			num = rs.getRow(); // ÇàÀÇ °³¼ö
+			rs.last(); // ì»¤ì„œê°€ ë§¨ ë§ˆì§€ë§‰ í–‰ìœ¼ë¡œ ì´ë™
+			num = rs.getRow(); // í–‰ì˜ ê°œìˆ˜
 		} catch (Exception se) {
 			// System.out.println(se.getMessage());
 		} // throw exception
 		return num;
 	}
 
-	// ¾ÆÀÌµğ Áßº¹ È®ÀÎ ¸Ş¼Òµå
+	// ì•„ì´ë”” ì¤‘ë³µ í™•ì¸ ë©”ì†Œë“œ
 	public boolean checkId(String id) {
 		try {
-			// ÆÄ¶ó¹ÌÅÍ·Î ¹Ş¾Æ¿Â idÀ» °Ë»öÇÑ´Ù.
+			// íŒŒë¼ë¯¸í„°ë¡œ ë°›ì•„ì˜¨ idì„ ê²€ìƒ‰í•œë‹¤.
 			rs = stmt.executeQuery("select * from member where id='" + id + "'");
 
 			if (rs.next()) {
 				rs.close();
-				return true; // true ¹İÈ¯
+				return true; // true ë°˜í™˜
 			} else
 				rs.close();
 			return false;
@@ -49,15 +49,15 @@ public class Management {
 		return false;
 	}
 
-	// ÀüÈ­¹øÈ£ Áßº¹ È®ÀÎ ¸Ş¼Òµå
+	// ì „í™”ë²ˆí˜¸ ì¤‘ë³µ í™•ì¸ ë©”ì†Œë“œ
 	public boolean checkPhoneNum(String phoneNum) {
 		try {
-			// ÆÄ¶ó¹ÌÅÍ·Î ¹Ş¾Æ¿Â phoneNumÀ» °Ë»öÇÑ´Ù.
+			// íŒŒë¼ë¯¸í„°ë¡œ ë°›ì•„ì˜¨ phoneNumì„ ê²€ìƒ‰í•œë‹¤.
 			rs = stmt.executeQuery("select * from member where phoneNum='" + phoneNum + "'");
 
 			if (rs.next()) {
 				rs.close();
-				return true;// true ¹İÈ¯
+				return true;// true ë°˜í™˜
 			} else
 				rs.close();
 			return false;
@@ -69,11 +69,11 @@ public class Management {
 		return false;
 	}
 
-	// °èÁ¤ µî·Ï ¸Ş¼Òµå
+	// ê³„ì • ë“±ë¡ ë©”ì†Œë“œ
 	public void add(Member P) throws Exception {
 		try {
 			num = getCount();
-			// ¹Ş¾Æ¿Â Account °´Ã¼ P¸¦ db¿¡ Ãß°¡ÇØ ÁØ´Ù.
+			// ë°›ì•„ì˜¨ Account ê°ì²´ Pë¥¼ dbì— ì¶”ê°€í•´ ì¤€ë‹¤.
 			rs = stmt.executeQuery("insert into member(num, user, name, phoneNum, id, pw, time, state) values(" + num
 					+ ",'" + P.getUser() + "','" + P.getName() + "','" + P.getPhoneNum() + "','" + P.getId() + "','"
 					+ P.getPw() + "','" + P.getTime() + "','" + P.getState() + "');");
@@ -83,55 +83,55 @@ public class Management {
 		}
 	}
 
-	// »ç¿ëÁßÀÎÁö È®ÀÎ
+	// ì‚¬ìš©ì¤‘ì¸ì§€ í™•ì¸
 	public int useCheck(String PCNum) throws Exception {
 		int i = -1;
-		// ¹Ş¾Æ¿Â id¸¦ db¿¡¼­ Ã£´Â´Ù.
+		// ë°›ì•„ì˜¨ idë¥¼ dbì—ì„œ ì°¾ëŠ”ë‹¤.
 		rs = stmt.executeQuery("select * from member where state = '" + PCNum + "'");
 		while (rs.next()) {
-			i = rs.getInt("num"); // ÀĞ¾î¿Â num µ¥ÀÌÅÍ¸¦ i¿¡ intÇüÀ¸·Î º¹»ç
+			i = rs.getInt("num"); // ì½ì–´ì˜¨ num ë°ì´í„°ë¥¼ iì— intí˜•ìœ¼ë¡œ ë³µì‚¬
 			return i;
 		}
-		throw new Exception("µî·ÏµÈ ÀÌ¸§ ¾øÀ½");
+		throw new Exception("ë“±ë¡ëœ ì´ë¦„ ì—†ìŒ");
 	}
 
-	// ÀÌ¸§À¸·Î È¸¿ø Á¤º¸ Ã£±â
+	// ì´ë¦„ìœ¼ë¡œ íšŒì› ì •ë³´ ì°¾ê¸°
 	public int searchName(String name) throws Exception {
 		int i = -1;
-		// ¹Ş¾Æ¿Â id¸¦ db¿¡¼­ Ã£´Â´Ù.
+		// ë°›ì•„ì˜¨ idë¥¼ dbì—ì„œ ì°¾ëŠ”ë‹¤.
 		rs = stmt.executeQuery("select * from member where name = '" + name + "'");
 		while (rs.next()) {
-			i = rs.getInt("num"); // ÀĞ¾î¿Â num µ¥ÀÌÅÍ¸¦ i¿¡ intÇüÀ¸·Î º¹»ç
+			i = rs.getInt("num"); // ì½ì–´ì˜¨ num ë°ì´í„°ë¥¼ iì— intí˜•ìœ¼ë¡œ ë³µì‚¬
 			return i;
 		}
-		throw new Exception("µî·ÏµÈ ÀÌ¸§ ¾øÀ½");
+		throw new Exception("ë“±ë¡ëœ ì´ë¦„ ì—†ìŒ");
 	}
 
-	// ¾ÆÀÌµğ·Î °¡ÀÔÈ¸¿øÀÎÁö °Ë»ö, µî·ÏµÈ ¾ÆÀÌµğ°¡ ¾øÀ» °æ¿ì ÀÍ¼Á¼Ç
+	// ì•„ì´ë””ë¡œ ê°€ì…íšŒì›ì¸ì§€ ê²€ìƒ‰, ë“±ë¡ëœ ì•„ì´ë””ê°€ ì—†ì„ ê²½ìš° ìµì…‰ì…˜
 	public int searchId(String id) throws Exception {
 		int i = -1;
-		// ¹Ş¾Æ¿Â id¸¦ db¿¡¼­ Ã£´Â´Ù.
+		// ë°›ì•„ì˜¨ idë¥¼ dbì—ì„œ ì°¾ëŠ”ë‹¤.
 		rs = stmt.executeQuery("select * from member where id = '" + id + "'");
 		while (rs.next()) {
-			i = rs.getInt("num"); // ÀĞ¾î¿Â num µ¥ÀÌÅÍ¸¦ i¿¡ intÇüÀ¸·Î º¹»ç
+			i = rs.getInt("num"); // ì½ì–´ì˜¨ num ë°ì´í„°ë¥¼ iì— intí˜•ìœ¼ë¡œ ë³µì‚¬
 			return i;
 		}
-		throw new Exception("µî·ÏµÈ ¾ÆÀÌµğ ¾øÀ½");
+		throw new Exception("ë“±ë¡ëœ ì•„ì´ë”” ì—†ìŒ");
 	}
 
-	// ÀüÈ­¹øÈ£·Î °¡ÀÔÈ¸¿øÀÎÁö °Ë»ö, µî·ÏµÈ ÀüÈ­¹øÈ£°¡ ¾øÀ» °æ¿ì ÀÍ¼Á¼Ç
+	// ì „í™”ë²ˆí˜¸ë¡œ ê°€ì…íšŒì›ì¸ì§€ ê²€ìƒ‰, ë“±ë¡ëœ ì „í™”ë²ˆí˜¸ê°€ ì—†ì„ ê²½ìš° ìµì…‰ì…˜
 	public int searchPhone(String phoneNum) throws Exception {
 		int i = -1;
-		// ¹Ş¾Æ¿Â phoneNum¸¦ db¿¡¼­ Ã£´Â´Ù.
+		// ë°›ì•„ì˜¨ phoneNumë¥¼ dbì—ì„œ ì°¾ëŠ”ë‹¤.
 		rs = stmt.executeQuery("select * from member where phoneNum = '" + phoneNum + "'");
 		while (rs.next()) {
-			i = rs.getInt("num"); // ÀĞ¾î¿Â num µ¥ÀÌÅÍ¸¦ i¿¡ intÇüÀ¸·Î º¹»ç
+			i = rs.getInt("num"); // ì½ì–´ì˜¨ num ë°ì´í„°ë¥¼ iì— intí˜•ìœ¼ë¡œ ë³µì‚¬
 			return i;
 		}
-		throw new Exception("µî·ÏµÈ ÀüÈ­¹øÈ£ ¾øÀ½");
+		throw new Exception("ë“±ë¡ëœ ì „í™”ë²ˆí˜¸ ì—†ìŒ");
 	}
 
-	// ½Ã°£ ¼öÁ¤ ¸Ş¼Òµå
+	// ì‹œê°„ ìˆ˜ì • ë©”ì†Œë“œ
 	public void modifytime(int index, double time) throws SQLException {
 		try {
 			double newtime = 0;
@@ -146,7 +146,7 @@ public class Management {
 		}
 	}
 
-	// ½Ã°£À» 0À¸·Î ¼öÁ¤ÇÏ´Â ¸Ş¼Òµå
+	// ì‹œê°„ì„ 0ìœ¼ë¡œ ìˆ˜ì •í•˜ëŠ” ë©”ì†Œë“œ
 	public void zerotime(int index, double time) throws SQLException {
 		try {
 			rs = stmt.executeQuery("update member set time='" + time + "'where num='" + index + "'");
@@ -156,7 +156,7 @@ public class Management {
 		}
 	}
 
-	// state¸¦ »ç¿ë°¡´ÉÀ¸·Î ¼öÁ¤ÇÏ´Â ¸Ş¼Òµå
+	// stateë¥¼ ì‚¬ìš©ê°€ëŠ¥ìœ¼ë¡œ ìˆ˜ì •í•˜ëŠ” ë©”ì†Œë“œ
 	public void logoutModify(int index, String state) throws SQLException {
 		try {
 			rs = stmt.executeQuery("update member set state='" + state + "'where num='" + index + "'");
@@ -166,7 +166,7 @@ public class Management {
 		}
 	}
 	
-	// ÇØ´ç ¼­¹öÀÇ ip¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	// í•´ë‹¹ ì„œë²„ì˜ ipë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	public void getIp(int index, String ip) throws SQLException {
 		try {
 			rs = stmt.executeQuery("update member set ip='" + ip + "'where num='" + index + "'");
@@ -176,7 +176,7 @@ public class Management {
 		}
 	}
 
-	// °³ÀÎÁ¤º¸ ¼öÁ¤ ¸Ş¼Òµå
+	// ê°œì¸ì •ë³´ ìˆ˜ì • ë©”ì†Œë“œ
 	public void modify(int index, String name, String phonenum, String id, String pw) throws SQLException {
 		try {
 			rs = stmt.executeQuery("update member set name='" + name + "'where num='" + index + "'");
@@ -189,7 +189,7 @@ public class Management {
 		}
 	}
 
-	// state¸¦ »ç¿ëÁßÀ¸·Î ¹Ù²Ù´Â ¸Ş¼Òµå
+	// stateë¥¼ ì‚¬ìš©ì¤‘ìœ¼ë¡œ ë°”ê¾¸ëŠ” ë©”ì†Œë“œ
 	public void stateModify(int index, String PCNum) throws SQLException {
 		try {
 			rs = stmt.executeQuery("update member set state='" + PCNum + "'where num='" + index + "'");
@@ -199,7 +199,7 @@ public class Management {
 		}
 	}
 
-	// Person °´Ã¼ ³Ñ°ÜÁÖ´Â ¸Ş¼Òµå
+	// Person ê°ì²´ ë„˜ê²¨ì£¼ëŠ” ë©”ì†Œë“œ
 	public Member getPerson(int index) {
 		String user = "", name = "", phoneNum = "", id = "", pw = "", state = "", ip="";
 		try {
@@ -222,11 +222,11 @@ public class Management {
 		return null;
 	}
 
-	// ¸Ş´º µî·Ï½ÃÄÑÁÖ´Â ¸Ş¼Òµå
+	// ë©”ë‰´ ë“±ë¡ì‹œì¼œì£¼ëŠ” ë©”ì†Œë“œ
 	public void insertMenu(String type, String product, String price, String count, String date, String remarks)
 			throws Exception {
 		try {
-			// "Á¾·ù", "Ç°¸í", "°¡°İ", "Àç°í·®", "ÀÔ°íÀÏ", "ºñ°í"
+			// "ì¢…ë¥˜", "í’ˆëª…", "ê°€ê²©", "ì¬ê³ ëŸ‰", "ì…ê³ ì¼", "ë¹„ê³ "
 			rs = stmt.executeQuery("insert into menu(type, product, price, count, date, remarks) "
 					+ "values('" + type + "','" + product + "','" + price + "','" + count + "','"
 					+ date + "','" + remarks + "');");
@@ -235,28 +235,28 @@ public class Management {
 		}
 	}
 
-	// ¸Ş´º »èÁ¦½ÃÄÑÁÖ´Â ¸Ş¼Òµå
+	// ë©”ë‰´ ì‚­ì œì‹œì¼œì£¼ëŠ” ë©”ì†Œë“œ
 	public void delMenu(String product) throws SQLException {
 		try {
 			rs = stmt.executeQuery("delete from menu where product='" + product + "'");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "¸Ş´º »èÁ¦¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(null, "ë©”ë‰´ ì‚­ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 
-	// ¸Ş´º ÆÇ¸Å ¸Ş¼Òµå
+	// ë©”ë‰´ íŒë§¤ ë©”ì†Œë“œ
 	public void sellMenu(String product, String count) {
 		try {
 			rs = stmt.executeQuery("update menu set count='" + count + "' where product='" + product + "'");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "°áÁ¦¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(null, "ê²°ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 
-	// ¸Ş´º DB·Î ºÎÅÍ °ªÀ» ÀĞ¾î¿Â´Ù
+	// ë©”ë‰´ DBë¡œ ë¶€í„° ê°’ì„ ì½ì–´ì˜¨ë‹¤
 	public void readMenu(ArrayList<Menu> list) throws Exception {
 		int num = 0;
 		try {
@@ -275,7 +275,7 @@ public class Management {
 			}
 			/*
 			if (num == 0) {
-				JOptionPane.showMessageDialog(null, "Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì¡°íšŒí•  ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			}
 			*/
 
@@ -284,9 +284,9 @@ public class Management {
 		}
 
 	}
-	// ¸Ş´ºDB¿¡¼­ °ªÀĞ¾î ¿À´Â ¸Ş¼Òµå Á¾·á
+	// ë©”ë‰´DBì—ì„œ ê°’ì½ì–´ ì˜¤ëŠ” ë©”ì†Œë“œ ì¢…ë£Œ
 
-	// Æ¯Á¤ »óÇ° Á¤º¸ ºÒ·¯¿Â´Ù.
+	// íŠ¹ì • ìƒí’ˆ ì •ë³´ ë¶ˆëŸ¬ì˜¨ë‹¤.
 	public Menu readProduct(String product) {
 
 		Menu menuInfo = null;
@@ -307,7 +307,7 @@ public class Management {
 			}
 			/*
 			if (num == 0) {
-				JOptionPane.showMessageDialog(null, "Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ Á¸Àç ÇÏÁö ¾Ê½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì¡°íšŒí•  ë°ì´í„°ê°€ ì¡´ì¬ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			}
 			*/
 		} catch (Exception e) {
@@ -315,9 +315,9 @@ public class Management {
 		}
 		return menuInfo;
 	}
-	// ¸Ş´ºDB¿¡¼­ °ªÀĞ¾î ¿À´Â ¸Ş¼Òµå Á¾·á
+	// ë©”ë‰´DBì—ì„œ ê°’ì½ì–´ ì˜¤ëŠ” ë©”ì†Œë“œ ì¢…ë£Œ
 
-	// Æ¯Á¤ Á¾·ù Á¤º¸¸¦ ºÒ·¯¿Â´Ù.
+	// íŠ¹ì • ì¢…ë¥˜ ì •ë³´ë¥¼ ë¶ˆëŸ¬ì˜¨ë‹¤.
 	public Menu[] readType(String type, ArrayList<Menu> typeList) {
 
 		Menu menuInfo[] = null;
@@ -338,7 +338,7 @@ public class Management {
 			}
 			/*
 			if (num == 0) {
-				JOptionPane.showMessageDialog(null, "Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ Á¸Àç ÇÏÁö ¾Ê½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(null, "ì¡°íšŒí•  ë°ì´í„°ê°€ ì¡´ì¬ í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 			}
 			*/
 		} catch (Exception e) {
@@ -347,9 +347,9 @@ public class Management {
 		return menuInfo;
 
 	}
-	// ¸Ş´ºDB¿¡¼­ °ªÀĞ¾î ¿À´Â ¸Ş¼Òµå Á¾·á
+	// ë©”ë‰´DBì—ì„œ ê°’ì½ì–´ ì˜¤ëŠ” ë©”ì†Œë“œ ì¢…ë£Œ
 	
-	// ¸ÅÃâ ¼öÁ¤ ¸Ş¼Òµå
+	// ë§¤ì¶œ ìˆ˜ì • ë©”ì†Œë“œ
 	public void salesmodify(int sales) throws SQLException {
 		int totalsales = 0;
 		try {
@@ -365,7 +365,7 @@ public class Management {
 		}
 	}
 
-	// ¸ÅÃâ °¡Á®¿À±â
+	// ë§¤ì¶œ ê°€ì ¸ì˜¤ê¸°
 	public String getSales() throws Exception {
 		int i = -1;
 		String salesText = null;

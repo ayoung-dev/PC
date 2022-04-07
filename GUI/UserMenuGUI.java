@@ -9,21 +9,21 @@ import java.sql.SQLException;
 
 class UserMenuGUI {
 
-	private int total = 0; // ÃÑ ±İ¾×¿¡ µé¾î°¥ Á¤¼ö
+	private int total = 0; // ì´ ê¸ˆì•¡ì— ë“¤ì–´ê°ˆ ì •ìˆ˜
 
-	// Ãë¼Ò¹öÆ°À» ´­·¶´ÂÁö È®ÀÎ
+	// ì·¨ì†Œë²„íŠ¼ì„ ëˆŒë €ëŠ”ì§€ í™•ì¸
 	private boolean doDelete = false;
 	
-	// °úÀÚ Å¬¸¯ count
+	// ê³¼ì í´ë¦­ count
 	private int[] sCnt = new int[20];
-	// À½·á¼ö Å¬¸¯ count
+	// ìŒë£Œìˆ˜ í´ë¦­ count
 	private int[] jCnt = new int[20];
-	// ¶ó¸é Å¬¸¯ count
+	// ë¼ë©´ í´ë¦­ count
 	private int[] nCnt = new int[20];
-	// ½Ä»ç Å¬¸¯ count
+	// ì‹ì‚¬ í´ë¦­ count
 	private int[] mCnt = new int[12];
 
-	// µğºñ¿¡¼­ ¼±ÅÃµÈ °Ë»öµÈ ¸â¹ö¸¦ ÀúÀå
+	// ë””ë¹„ì—ì„œ ì„ íƒëœ ê²€ìƒ‰ëœ ë©¤ë²„ë¥¼ ì €ì¥
 	private ArrayList<Member> list = new ArrayList<Member>();
 	private ArrayList<Menu> typeList = new ArrayList<Menu>();
 	private Menu productList = null;
@@ -37,27 +37,27 @@ class UserMenuGUI {
 	}
 	
 	public UserMenuGUI() {
-		// ÄÃ·³³×ÀÓ ÁöÁ¤
-		String[] orderCulumnName = { "Á¦Ç°¸í", "°¡°İ", "¼ö·®" };
+		// ì»¬ëŸ¼ë„¤ì„ ì§€ì •
+		String[] orderCulumnName = { "ì œí’ˆëª…", "ê°€ê²©", "ìˆ˜ëŸ‰" };
 
-		// ÄÄÆ÷³ÍÆ® ¼±¾ğ
+		// ì»´í¬ë„ŒíŠ¸ ì„ ì–¸
 		dtm = new DefaultTableModel(orderCulumnName, 0) {
-			// ¼¿ÆíÁıÀ» ¸øÇÏ°Ô ÇÏ´Â ÇÊµå
+			// ì…€í¸ì§‘ì„ ëª»í•˜ê²Œ í•˜ëŠ” í•„ë“œ
 			public boolean isCellEditable(int row, int column) {
 				return true;
 			}
 		};
-		JTabbedPane tap = new JTabbedPane(); // JTabbedPane»ı¼º
+		JTabbedPane tap = new JTabbedPane(); // JTabbedPaneìƒì„±
 
-		// ÄÄÆ÷³ÍÆ® ¼±¾ğ
-		JFrame orderFrame = new JFrame("À½½Ä ÁÖ¹®");
+		// ì»´í¬ë„ŒíŠ¸ ì„ ì–¸
+		JFrame orderFrame = new JFrame("ìŒì‹ ì£¼ë¬¸");
 
-		// ½ºÅ©·Ñ ÆĞ³Î »ı¼º ÈÄ Å×ÀÌºí ³Ö±â?
+		// ìŠ¤í¬ë¡¤ íŒ¨ë„ ìƒì„± í›„ í…Œì´ë¸” ë„£ê¸°?
 		jt = new JTable(dtm);
 		JScrollPane orderPanel = new JScrollPane(jt);
 		orderPanel.setPreferredSize(new Dimension(270, 300));
 
-		// ÆĞ³Î »ı¼º
+		// íŒ¨ë„ ìƒì„±
 		JPanel pSnack = new JPanel();
 		JPanel pJuice = new JPanel();
 		JPanel pNoodle = new JPanel();
@@ -70,20 +70,20 @@ class UserMenuGUI {
 
 		int orderSum = 0;
 
-		// ¹öÆ°
-		JButton delBtn = new JButton("Ãë ¼Ò");
-		JButton buyBtn = new JButton("°á Á¦");
+		// ë²„íŠ¼
+		JButton delBtn = new JButton("ì·¨ ì†Œ");
+		JButton buyBtn = new JButton("ê²° ì œ");
 
-		// ¶óº§
-		totalPrice = new JLabel("  ÃÑ  ±İ ¾×  :  0 ");
+		// ë¼ë²¨
+		totalPrice = new JLabel("  ì´  ê¸ˆ ì•¡  :  0 ");
 
-		// ÅÇ »ı¼º
-		tap.add(" °ú ÀÚ ", pSnack); // JTabbedPane¿¡ ÅÇÃß°¡
-		tap.add(" À½ ·á ¼ö ", pJuice);
-		tap.add(" ¶ó ¸é ", pNoodle);
-		tap.add(" ½Ä »ç ( µ¤ ¹ä ) ", pMeal);
+		// íƒ­ ìƒì„±
+		tap.add(" ê³¼ ì ", pSnack); // JTabbedPaneì— íƒ­ì¶”ê°€
+		tap.add(" ìŒ ë£Œ ìˆ˜ ", pJuice);
+		tap.add(" ë¼ ë©´ ", pNoodle);
+		tap.add(" ì‹ ì‚¬ ( ë® ë°¥ ) ", pMeal);
 
-		// ¿À¸¥ÂÊ orderÃ¢ ¾Æ·¡ / Á¶È¸+°áÁ¦ ¹öÆ° ·¹ÀÌ¾Æ¿ô
+		// ì˜¤ë¥¸ìª½ orderì°½ ì•„ë˜ / ì¡°íšŒ+ê²°ì œ ë²„íŠ¼ ë ˆì´ì•„ì›ƒ
 		orderD.setLayout(new GridLayout(1, 2, 3, 3));
 		orderD.setPreferredSize(new Dimension(270, 60));
 		orderD.add(delBtn);
@@ -92,28 +92,28 @@ class UserMenuGUI {
 		orderFrame.add(east, "East");
 		orderFrame.add(tap, "Center");
 
-		// ¿À¸¥ÂÊ order Ã¢ À§ / ¼±ÅÃ ³»¿ª
+		// ì˜¤ë¥¸ìª½ order ì°½ ìœ„ / ì„ íƒ ë‚´ì—­
 		orderU.setLayout(new BorderLayout());
 		orderU.add(orderPanel, "Center");
 		orderU.add(sum, "South");
 
-		// east ·¹ÀÌ¾Æ¿ô(ÁÖ¹® ¸ñ·Ï°ú °áÁ¦ Ã¢) ¼¼ÆÃ
+		// east ë ˆì´ì•„ì›ƒ(ì£¼ë¬¸ ëª©ë¡ê³¼ ê²°ì œ ì°½) ì„¸íŒ…
 		east.setLayout(new BorderLayout());
 		east.add(orderU, "Center");
 		east.add(orderD, "South");
 
-		// orderlist¿¡ ÃÑ ±İ¾× ³ª¿À´Â sum Panel
+		// orderlistì— ì´ ê¸ˆì•¡ ë‚˜ì˜¤ëŠ” sum Panel
 		sum.setLayout(new GridLayout(1, 2, 4, 3));
 		sum.setPreferredSize(new Dimension(270, 30));
 		sum.add(totalPrice);
 		// sum.add();
 
-		// ÀÌº¥Æ® ¸®½º³Ê
+		// ì´ë²¤íŠ¸ ë¦¬ìŠ¤ë„ˆ
 		buyBtn.addActionListener(new sumEvent());
 		delBtn.addActionListener(new delEvent());
 
-		/* °úÀÚ ÅÇ ¼³Á¤ */
-		LoginGUI.ac.readType("°úÀÚ", typeList);
+		/* ê³¼ì íƒ­ ì„¤ì • */
+		LoginGUI.ac.readType("ê³¼ì", typeList);
 		
 		ArrayList<String> snackName = new ArrayList<String>();
 		ArrayList<String> snackPrice = new ArrayList<String>();
@@ -132,13 +132,13 @@ class UserMenuGUI {
 		for (int i = 0; i < snackName.size(); i++) {
 			sButtons[i] = new JButton(snackName.get(i));
 		}
-		// ½º³¼ÄÚ³Ê ·¹ÀÌ¾Æ¿ô(À½½Ä º¸ÀÌ´Â Ã¢) ¼¼ÆÃ
+		// ìŠ¤ë‚µì½”ë„ˆ ë ˆì´ì•„ì›ƒ(ìŒì‹ ë³´ì´ëŠ” ì°½) ì„¸íŒ…
 		pSnack.setLayout(new GridLayout(4, 5, 3, 3));
 		for (int i = 0; i < snackName.size(); i++) {
 			pSnack.add(sButtons[i]);
 		}
 
-		// °úÀÚ Å¬¸¯ ÀÌº¥Æ®
+		// ê³¼ì í´ë¦­ ì´ë²¤íŠ¸
 		for (int i = 0; i < snackName.size(); i++) {
 			final int idx1;
 			idx1 = i;
@@ -147,9 +147,9 @@ class UserMenuGUI {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					sCnt[idx1]++;
-					JOptionPane.showMessageDialog(null, snackName.get(idx1) + "+" + sCnt[idx1] + " ÁÖ¹® ¸ñ·Ï¿¡ ´ã½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, snackName.get(idx1) + "+" + sCnt[idx1] + " ì£¼ë¬¸ ëª©ë¡ì— ë‹´ìŠµë‹ˆë‹¤.");
 					total += Integer.parseInt(snackPrice.get(idx1));
-					totalPrice.setText("  ÃÑ  ±İ ¾×  :  " + total);
+					totalPrice.setText("  ì´  ê¸ˆ ì•¡  :  " + total);
 					if (sCnt[idx1] <= 1)
 						dtm.addRow(new Object[] { snackName.get(idx1), snackPrice.get(idx1), sCnt[idx1] });
 					else {
@@ -167,9 +167,9 @@ class UserMenuGUI {
 			});
 		}
 
-		/* À½·á¼ö ÅÇ ¼³Á¤ */
+		/* ìŒë£Œìˆ˜ íƒ­ ì„¤ì • */
 		typeList.clear();
-		LoginGUI.ac.readType("À½·á¼ö", typeList);
+		LoginGUI.ac.readType("ìŒë£Œìˆ˜", typeList);
 		
 		ArrayList<String> juiceName = new ArrayList<String>();
 		ArrayList<String> juicePrice = new ArrayList<String>();
@@ -188,13 +188,13 @@ class UserMenuGUI {
 		for (int i = 0; i < juiceName.size(); i++) {
 			jButtons[i] = new JButton(juiceName.get(i));
 		}
-		// À½·á ÄÚ³Ê ·¹ÀÌ¾Æ¿ô(À½½Ä º¸ÀÌ´Â Ã¢) ¼¼ÆÃ
+		// ìŒë£Œ ì½”ë„ˆ ë ˆì´ì•„ì›ƒ(ìŒì‹ ë³´ì´ëŠ” ì°½) ì„¸íŒ…
 		pJuice.setLayout(new GridLayout(4, 5, 3, 3));
 		for (int i = 0; i < juiceName.size(); i++) {
 			pJuice.add(jButtons[i]);
 		}
 
-		// À½·á Å¬¸¯ ÀÌº¥Æ®
+		// ìŒë£Œ í´ë¦­ ì´ë²¤íŠ¸
 		for (int i = 0; i < juiceName.size(); i++) {
 			final int idx2;
 			idx2 = i;
@@ -203,9 +203,9 @@ class UserMenuGUI {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					jCnt[idx2]++;
-					JOptionPane.showMessageDialog(null, juiceName.get(idx2) + "+" + jCnt[idx2] + " ÁÖ¹® ¸ñ·Ï¿¡ ´ã½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, juiceName.get(idx2) + "+" + jCnt[idx2] + " ì£¼ë¬¸ ëª©ë¡ì— ë‹´ìŠµë‹ˆë‹¤.");
 					total += Integer.parseInt(juicePrice.get(idx2));
-					totalPrice.setText("  ÃÑ  ±İ ¾×  :  " + total);
+					totalPrice.setText("  ì´  ê¸ˆ ì•¡  :  " + total);
 					if (jCnt[idx2] <= 1)
 						dtm.addRow(new Object[] { juiceName.get(idx2), juicePrice.get(idx2), jCnt[idx2] });
 					else {
@@ -223,9 +223,9 @@ class UserMenuGUI {
 			});
 		}
 
-		/* ¶ó¸é ÅÇ ¼³Á¤ */
+		/* ë¼ë©´ íƒ­ ì„¤ì • */
 		typeList.clear();
-		LoginGUI.ac.readType("¶ó¸é", typeList);
+		LoginGUI.ac.readType("ë¼ë©´", typeList);
 		
 		ArrayList<String> NoodleName = new ArrayList<String>();
 		ArrayList<String> noodlePrice = new ArrayList<String>();
@@ -243,12 +243,12 @@ class UserMenuGUI {
 		for (int i = 0; i < NoodleName.size(); i++) {
 			nButtons[i] = new JButton(NoodleName.get(i));
 		}
-		// ¶ó¸é ÄÚ³Ê ·¹ÀÌ¾Æ¿ô(À½½Ä º¸ÀÌ´Â Ã¢) ¼¼ÆÃ
+		// ë¼ë©´ ì½”ë„ˆ ë ˆì´ì•„ì›ƒ(ìŒì‹ ë³´ì´ëŠ” ì°½) ì„¸íŒ…
 		pNoodle.setLayout(new GridLayout(4, 5, 3, 3));
 		for (int i = 0; i < NoodleName.size(); i++) {
 			pNoodle.add(nButtons[i]);
 		}
-		// ¶ó¸é Å¬¸¯ ÀÌº¥Æ®
+		// ë¼ë©´ í´ë¦­ ì´ë²¤íŠ¸
 		for (int i = 0; i < NoodleName.size(); i++) {
 			final int idx3;
 			idx3 = i;
@@ -257,9 +257,9 @@ class UserMenuGUI {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					nCnt[idx3]++;
-					JOptionPane.showMessageDialog(null, NoodleName.get(idx3) + "+" + nCnt[idx3] + " ÁÖ¹® ¸ñ·Ï¿¡ ´ã½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, NoodleName.get(idx3) + "+" + nCnt[idx3] + " ì£¼ë¬¸ ëª©ë¡ì— ë‹´ìŠµë‹ˆë‹¤.");
 					total += Integer.parseInt(noodlePrice.get(idx3));
-					totalPrice.setText("  ÃÑ  ±İ ¾×  :  " + total);
+					totalPrice.setText("  ì´  ê¸ˆ ì•¡  :  " + total);
 					if (nCnt[idx3] <= 1) {
 						dtm.addRow(new Object[] { NoodleName.get(idx3), noodlePrice.get(idx3), nCnt[idx3] });
 					} else {
@@ -277,9 +277,9 @@ class UserMenuGUI {
 			});
 		}
 
-		/* ½Ä»ç ÅÇ ¼³Á¤ */
+		/* ì‹ì‚¬ íƒ­ ì„¤ì • */
 		typeList.clear();
-		LoginGUI.ac.readType("½Ä»ç·ù", typeList);
+		LoginGUI.ac.readType("ì‹ì‚¬ë¥˜", typeList);
 		
 		ArrayList<String> MealName = new ArrayList<String>();
 		ArrayList<String> mealePrice = new ArrayList<String>();
@@ -298,13 +298,13 @@ class UserMenuGUI {
 		for (int i = 0; i < MealName.size(); i++) {
 			mButtons[i] = new JButton(MealName.get(i));
 		}
-		// ½Ä»ç ÄÚ³Ê ·¹ÀÌ¾Æ¿ô(À½½Ä º¸ÀÌ´Â Ã¢) ¼¼ÆÃ
+		// ì‹ì‚¬ ì½”ë„ˆ ë ˆì´ì•„ì›ƒ(ìŒì‹ ë³´ì´ëŠ” ì°½) ì„¸íŒ…
 		pMeal.setLayout(new GridLayout(4, 5, 3, 3));
 		for (int i = 0; i < MealName.size(); i++) {
 			pMeal.add(mButtons[i]);
 		}
 
-		// ½Ä»ç Å¬¸¯ ÀÌº¥Æ®
+		// ì‹ì‚¬ í´ë¦­ ì´ë²¤íŠ¸
 		for (int i = 0; i < MealName.size(); i++) {
 			final int idx4;
 			idx4 = i;
@@ -316,9 +316,9 @@ class UserMenuGUI {
 				public void actionPerformed(ActionEvent e) {
 
 					mCnt[idx4]++;
-					JOptionPane.showMessageDialog(null, MealName.get(idx4) + "+" + mCnt[idx4] + " ÁÖ¹® ¸ñ·Ï¿¡ ´ã½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, MealName.get(idx4) + "+" + mCnt[idx4] + " ì£¼ë¬¸ ëª©ë¡ì— ë‹´ìŠµë‹ˆë‹¤.");
 					total += Integer.parseInt(mealePrice.get(idx4));
-					totalPrice.setText("  ÃÑ  ±İ ¾×  :  " + total);
+					totalPrice.setText("  ì´  ê¸ˆ ì•¡  :  " + total);
 					if (mCnt[idx4] <= 1)
 						dtm.addRow(new Object[] { MealName.get(idx4), mealePrice.get(idx4), mCnt[idx4] });
 					else {
@@ -335,35 +335,35 @@ class UserMenuGUI {
 			});
 		}
 
-		// ÇÁ·¹ÀÓ À§Ä¡ ¼¼ÆÃ
+		// í”„ë ˆì„ ìœ„ì¹˜ ì„¸íŒ…
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width / 3;
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height / 7;
 
-		// ÇÁ·¹ÀÓÀÇ ±âº»ÀûÀÎ À§Ä¡¿Í »çÀÌÁî ¼¼ÆÃ
+		// í”„ë ˆì„ì˜ ê¸°ë³¸ì ì¸ ìœ„ì¹˜ì™€ ì‚¬ì´ì¦ˆ ì„¸íŒ…
 		orderFrame.setResizable(false);
 		orderFrame.setBounds(width, height, 800, 450);
 		orderFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		orderFrame.setVisible(true);
 	}
 
-	// °áÁ¦ ¹öÆ°À» ´©¸£¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+	// ê²°ì œ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
 	private class sumEvent implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int flag = 0;
 			
-			// µ¥º£¿¡ ÃÑ±İ¾× ³»¿ëÀÌ º¯°æµÇ¾ßÇÏ´Â ÄÚµå
+			// ë°ë² ì— ì´ê¸ˆì•¡ ë‚´ìš©ì´ ë³€ê²½ë˜ì•¼í•˜ëŠ” ì½”ë“œ
 			if (dtm.getRowCount() > 0) {
 				for(int i=0; i<dtm.getRowCount(); i++) {
 					
-					// getSelectedRow() - ¼±ÅÃµÈ Çà/ 1¹øÂ° ¿­
+					// getSelectedRow() - ì„ íƒëœ í–‰/ 1ë²ˆì§¸ ì—´
 					String sellProduct = (String) dtm.getValueAt(i, 0);
 					int sellCount = (int) dtm.getValueAt(i, 2);
 					System.out.println(sellProduct+sellCount);
 					
 					productList = LoginGUI.ac.readProduct(sellProduct);
-					// ÆÈ°í ³­ ´ÙÀ½ ³²´Â °³¼ö
+					// íŒ”ê³  ë‚œ ë‹¤ìŒ ë‚¨ëŠ” ê°œìˆ˜
 					int afterCount = Integer.parseInt(productList.getCount()) - sellCount;
 						
 						LoginGUI.ac.sellMenu(sellProduct, Integer.toString(afterCount));
@@ -380,27 +380,27 @@ class UserMenuGUI {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-					JOptionPane.showMessageDialog(null, "°áÁ¦ ¿Ï·áµÇ¾ú½À´Ï´Ù.");				
+					JOptionPane.showMessageDialog(null, "ê²°ì œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");				
 					resetRow();
 					total = 0;
-					totalPrice.setText("  ÃÑ  ±İ ¾×  :  " + total);
+					totalPrice.setText("  ì´  ê¸ˆ ì•¡  :  " + total);
 			}
 
 		}
 	}
 
-	// Ãë¼Ò ¹öÆ°À» ´©¸£¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+	// ì·¨ì†Œ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
 	private class delEvent implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			resetRow();
 			total = 0;
-			totalPrice.setText("  ÃÑ  ±İ ¾×  :  " + total);
+			totalPrice.setText("  ì´  ê¸ˆ ì•¡  :  " + total);
 		}
 	}
 
-	// Å×ÀÌºíÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå ½ÃÀÛ
+	// í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ ì‹œì‘
 	private void resetRow() {
 		if (dtm.getRowCount() > 0) {
 			sCnt = new int[20];
@@ -412,6 +412,6 @@ class UserMenuGUI {
 			}
 		}
 	}
-	// /Å×ÀÌºíÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå Á¾·á
+	// /í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ ì¢…ë£Œ
 
 }

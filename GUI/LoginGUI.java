@@ -1,4 +1,4 @@
-//·Î±×ÀÎ GUI
+//ë¡œê·¸ì¸ GUI
 package pc;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,33 +11,33 @@ public class LoginGUI extends JFrame{
 	public LoginGUI() {
 		setTitle("Login");
 		setBounds(10, 50, 400, 300);
-		//x¹öÆ° Å¬¸¯½Ã Á¾·á
+		//xë²„íŠ¼ í´ë¦­ì‹œ ì¢…ë£Œ
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,2));
-		JTextField id = new JTextField();	//¾ÆÀÌµğ¸¦ ¾²´Â ÅØ½ºÆ® ¹Ú½º
+		JTextField id = new JTextField();	//ì•„ì´ë””ë¥¼ ì“°ëŠ” í…ìŠ¤íŠ¸ ë°•ìŠ¤
 		id.setColumns(10);
-		JPasswordField pw = new JPasswordField(); //ºñ¹Ğ¹øÈ£¸¦ ¾²´Â ÅØ½ºÆ® ¹Ú½º
+		JPasswordField pw = new JPasswordField(); //ë¹„ë°€ë²ˆí˜¸ë¥¼ ì“°ëŠ” í…ìŠ¤íŠ¸ ë°•ìŠ¤
 		pw.setColumns(10);
-		panel.add(new JLabel("ID")); //¾ÆÀÌµğ ¶óº§ ³Ö±â
+		panel.add(new JLabel("ID")); //ì•„ì´ë”” ë¼ë²¨ ë„£ê¸°
 		panel.add(id);
-		panel.add(new JLabel("Password")); //ºñ¹Ğ¹øÈ£ ¶óº§ ³Ö±â
+		panel.add(new JLabel("Password")); //ë¹„ë°€ë²ˆí˜¸ ë¼ë²¨ ë„£ê¸°
 		panel.add(pw);
-		JButton signupbtn = new JButton("È¸¿ø°¡ÀÔ"); //"È¸¿ø°¡ÀÔ"¹öÆ° ¸¸µé±â
-		signupbtn.setOpaque(false);	//¹öÆ°À» Åõ¸íÇÏ°Ô true->ºÒÅõ¸í
-		signupbtn.setContentAreaFilled(false);	//¹öÆ° ¹è°æ ¾ø¾Ö±â
-		signupbtn.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		JButton signupbtn = new JButton("íšŒì›ê°€ì…"); //"íšŒì›ê°€ì…"ë²„íŠ¼ ë§Œë“¤ê¸°
+		signupbtn.setOpaque(false);	//ë²„íŠ¼ì„ íˆ¬ëª…í•˜ê²Œ true->ë¶ˆíˆ¬ëª…
+		signupbtn.setContentAreaFilled(false);	//ë²„íŠ¼ ë°°ê²½ ì—†ì• ê¸°
+		signupbtn.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		panel.add(signupbtn);
 		signupbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new SignUpGUI();
 			}
 		});
-		JButton findbtn = new JButton("¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â");	//"¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â"¹öÆ° ¸¸µé±â
-		findbtn.setOpaque(false);	//¹öÆ°À» Åõ¸íÇÏ°Ô true->ºÒÅõ¸í
-		findbtn.setContentAreaFilled(false);	//¹öÆ° ¹è°æ ¾ø¾Ö±â
-		findbtn.setBorderPainted(false);	//¹öÆ° Å×µÎ¸® ¾ø¾Ö±â
+		JButton findbtn = new JButton("ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°");	//"ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°"ë²„íŠ¼ ë§Œë“¤ê¸°
+		findbtn.setOpaque(false);	//ë²„íŠ¼ì„ íˆ¬ëª…í•˜ê²Œ true->ë¶ˆíˆ¬ëª…
+		findbtn.setContentAreaFilled(false);	//ë²„íŠ¼ ë°°ê²½ ì—†ì• ê¸°
+		findbtn.setBorderPainted(false);	//ë²„íŠ¼ í…Œë‘ë¦¬ ì—†ì• ê¸°
 		panel.add(findbtn);
 		findbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -47,26 +47,26 @@ public class LoginGUI extends JFrame{
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		
-		//È®ÀÎ, Ãë¼Ò ¹öÆ° ¸¸µé±â
+		//í™•ì¸, ì·¨ì†Œ ë²„íŠ¼ ë§Œë“¤ê¸°
 		JPanel panel_1 = new JPanel();
 		JButton okbtn = new JButton("Login");
 		panel_1.add(okbtn);
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
-		//Login¹öÆ°
+		//Loginë²„íŠ¼
 		okbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(id.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				}
 				else if(pw.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JOptionPane.showMessageDialog(null,"ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				}
 				else {
 					try {
-						index1 = ac.searchId(id.getText());	//id ÅØ½ºÆ®ÇÊµå¿¡ ÀÖ´Â °ªÀ» °Ë»öÇØ¼­ ÀÎµ¦½º °ª ÀúÀå
-						if(pw.getText().equals(ac.getPerson(index1).getPw())) {	//ÀÎµ¦½º °ªÀ» ÀÌ¿ëÇØ pw°ª ºÒ·¯¿Í¼­ pw ÅØ½ºÆ®ÇÊµå °ª°ú ºñ±³ÇÏ¿© °°À¸¸é ·Î±×ÀÎ µÊ
-							//»ç¿ëÀÚÀÌ¸é »ç¿ëÀÚÈ­¸é ¶ç¿ì±â
-							if(ac.getPerson(index1).getUser().equals("°ü¸®ÀÚ")) {
+						index1 = ac.searchId(id.getText());	//id í…ìŠ¤íŠ¸í•„ë“œì— ìˆëŠ” ê°’ì„ ê²€ìƒ‰í•´ì„œ ì¸ë±ìŠ¤ ê°’ ì €ì¥
+						if(pw.getText().equals(ac.getPerson(index1).getPw())) {	//ì¸ë±ìŠ¤ ê°’ì„ ì´ìš©í•´ pwê°’ ë¶ˆëŸ¬ì™€ì„œ pw í…ìŠ¤íŠ¸í•„ë“œ ê°’ê³¼ ë¹„êµí•˜ì—¬ ê°™ìœ¼ë©´ ë¡œê·¸ì¸ ë¨
+							//ì‚¬ìš©ìì´ë©´ ì‚¬ìš©ìí™”ë©´ ë„ìš°ê¸°
+							if(ac.getPerson(index1).getUser().equals("ê´€ë¦¬ì")) {
 								id.setText("");
 								pw.setText("");
 								new AdministratorGUI();
@@ -78,10 +78,10 @@ public class LoginGUI extends JFrame{
 							}
 						}	
 						else {
-							JOptionPane.showMessageDialog(null,"ºñ¹Ğ¹øÈ£°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
+							JOptionPane.showMessageDialog(null,"ë¹„ë°€ë²ˆí˜¸ê°€ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
 						}
 					} catch (Exception e1) {
-						JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ°¡ Àß¸øµÇ¾ú½À´Ï´Ù.");
+						JOptionPane.showMessageDialog(null,"ì•„ì´ë””ê°€ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤.");
 					}	
 					
 				}

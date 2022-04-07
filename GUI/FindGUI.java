@@ -1,4 +1,4 @@
-//¾ÆÀÌµğ, ºñ¹Ğ¹øÈ£ Ã£±â GUI
+//ì•„ì´ë””, ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸° GUI
 package pc;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,20 +17,20 @@ public class FindGUI extends JFrame{
 		name.setColumns(10);
 		JTextField phone = new JTextField();
 		phone.setColumns(10);
-		panel_1.add(new JLabel("ÀÌ¸§À» Àû¾îÁÖ¼¼¿ä."));
+		panel_1.add(new JLabel("ì´ë¦„ì„ ì ì–´ì£¼ì„¸ìš”."));
 		panel_1.add(name);
-		panel_1.add(new JLabel("ÀüÈ­¹øÈ£¸¦ Àû¾îÁÖ¼¼¿ä."));
+		panel_1.add(new JLabel("ì „í™”ë²ˆí˜¸ë¥¼ ì ì–´ì£¼ì„¸ìš”."));
 		panel_1.add(phone);
 		IDfind.add(panel_1);
 		JPanel panel_2 = new JPanel();
-		JButton findbutton = new JButton("Ã£±â"); //"Ã£±â"¹öÆ° ¸¸µé±â
+		JButton findbutton = new JButton("ì°¾ê¸°"); //"ì°¾ê¸°"ë²„íŠ¼ ë§Œë“¤ê¸°
 		findbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(name.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JOptionPane.showMessageDialog(null,"ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				}
 				else if(phone.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JOptionPane.showMessageDialog(null,"ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				}
 				else {
 					int index;
@@ -40,16 +40,16 @@ public class FindGUI extends JFrame{
 							JOptionPane.showMessageDialog(null,LoginGUI.ac.getPerson(index).getId());
 						}
 						else {
-							JOptionPane.showMessageDialog(null,"µî·ÏµÈ È¸¿øÀÌ ¾Æ´Õ´Ï´Ù.");
+							JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ íšŒì›ì´ ì•„ë‹™ë‹ˆë‹¤.");
 						}
 					} catch(Exception e1) {
-						JOptionPane.showMessageDialog(null,"µî·ÏµÈ È¸¿øÀÌ ¾Æ´Õ´Ï´Ù.");
+						JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ íšŒì›ì´ ì•„ë‹™ë‹ˆë‹¤.");
 					}
 				}
 			}
 		});
-		JButton cancelbutton = new JButton("Ãë¼Ò"); //"Ãë¼Ò"¹öÆ° ¸¸µé±â
-		//"Ãë¼Ò"¹öÆ°À» ´©¸£¸é ÇöÀç Ã¢ÀÌ ´İÈù´Ù.
+		JButton cancelbutton = new JButton("ì·¨ì†Œ"); //"ì·¨ì†Œ"ë²„íŠ¼ ë§Œë“¤ê¸°
+		//"ì·¨ì†Œ"ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í˜„ì¬ ì°½ì´ ë‹«íŒë‹¤.
 		cancelbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -67,20 +67,20 @@ public class FindGUI extends JFrame{
 		name1.setColumns(10);
 		JTextField id = new JTextField();
 		id.setColumns(10);
-		panel_3.add(new JLabel("ÀÌ¸§À» Àû¾îÁÖ¼¼¿ä."));
+		panel_3.add(new JLabel("ì´ë¦„ì„ ì ì–´ì£¼ì„¸ìš”."));
 		panel_3.add(name1);
-		panel_3.add(new JLabel("¾ÆÀÌµğ¸¦ Àû¾îÁÖ¼¼¿ä."));
+		panel_3.add(new JLabel("ì•„ì´ë””ë¥¼ ì ì–´ì£¼ì„¸ìš”."));
 		panel_3.add(id);
 		PWfind.add(panel_3);
 		JPanel panel_4 = new JPanel();
-		JButton findbutton1 = new JButton("Ã£±â"); //"Ã£±â"¹öÆ° ¸¸µé±â
+		JButton findbutton1 = new JButton("ì°¾ê¸°"); //"ì°¾ê¸°"ë²„íŠ¼ ë§Œë“¤ê¸°
 		findbutton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(name1.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JOptionPane.showMessageDialog(null,"ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				}
 				else if(id.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+					JOptionPane.showMessageDialog(null,"ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 				}
 				else {
 					int index;
@@ -90,16 +90,16 @@ public class FindGUI extends JFrame{
 							JOptionPane.showMessageDialog(null,LoginGUI.ac.getPerson(index).getPw());
 						}
 						else {
-							JOptionPane.showMessageDialog(null,"µî·ÏµÈ È¸¿øÀÌ ¾Æ´Õ´Ï´Ù.");
+							JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ íšŒì›ì´ ì•„ë‹™ë‹ˆë‹¤.");
 						}
 					} catch(Exception e1) {
-						JOptionPane.showMessageDialog(null,"µî·ÏµÈ È¸¿øÀÌ ¾Æ´Õ´Ï´Ù.");
+						JOptionPane.showMessageDialog(null,"ë“±ë¡ëœ íšŒì›ì´ ì•„ë‹™ë‹ˆë‹¤.");
 					}
 				}
 			}
 		});
-		JButton cancelbutton1 = new JButton("Ãë¼Ò"); //"Ãë¼Ò"¹öÆ° ¸¸µé±â
-		//"Ãë¼Ò"¹öÆ°À» ´©¸£¸é ÇöÀç Ã¢ÀÌ ´İÈù´Ù.
+		JButton cancelbutton1 = new JButton("ì·¨ì†Œ"); //"ì·¨ì†Œ"ë²„íŠ¼ ë§Œë“¤ê¸°
+		//"ì·¨ì†Œ"ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í˜„ì¬ ì°½ì´ ë‹«íŒë‹¤.
 		cancelbutton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -109,9 +109,9 @@ public class FindGUI extends JFrame{
 		panel_4.add(cancelbutton1);
 		PWfind.add(panel_4);
 		
-		//ÅÇ»ı¼º
-		tab.add("¾ÆÀÌµğ Ã£±â", IDfind);
-		tab.add("ºñ¹Ğ¹øÈ£ Ã£±â", PWfind);
+		//íƒ­ìƒì„±
+		tab.add("ì•„ì´ë”” ì°¾ê¸°", IDfind);
+		tab.add("ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°", PWfind);
 		add(tab);
 		
 		setVisible(true);
